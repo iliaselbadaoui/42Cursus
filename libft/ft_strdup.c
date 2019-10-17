@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 11:37:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/16 11:44:09 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/10/13 08:10:18 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/10/13 08:10:20 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 int		ft_strlen(char *str);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdup(const char *s1)
 {
-    int len;
-    char *new;
+	int		len;
+	char	*res;
 
-    len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
-    new = (char *)malloc(len * sizeof(char ));
-    while (s1 || s2)
-    {
-        if (s1)
-        {
-            *new = *s1;
-            s1++;
-        }
-        else
-        {
-            *new = *s2;
-            s2++;
-        }  
-        new++;
-    }
-    *new = '\0';
-    return (new);
+	len = ft_strlen((char *)s1);
+	res = malloc((len + 1) * sizeof(char));
+	ft_memcpy(res, s1, len + 1);
+	return (res);
 }
