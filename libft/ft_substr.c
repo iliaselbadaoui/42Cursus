@@ -12,13 +12,8 @@
 
 #include <stdlib.h>
 
-char	*ft_strdup(const char *s1);
 
-char    *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *res;
-
-	res = ft_strdup(s + start);
-	res[len] = '\0';
-	return (res);
+	
 }

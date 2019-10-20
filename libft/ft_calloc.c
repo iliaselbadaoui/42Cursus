@@ -16,9 +16,17 @@ void	ft_bzero(void *s, size_t n);
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void *area;
+	void	*area;
+	int		n;
 
-	area = (void *)malloc(count * size);
-	ft_bzero(area, count);
+	n = 0;
+	if ((area = (void *)malloc(count * size)))
+	{
+		while ((size_t)n < count)
+		{
+			((long *)area)[n] = 0;
+			n++;
+		}
+	}
 	return (area);
 }

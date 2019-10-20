@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	while (n && *((unsigned char *)src))
 	{

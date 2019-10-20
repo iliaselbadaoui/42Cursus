@@ -23,5 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 			res = (char *)s;
 		s++;
 	}
+	if (*s == c)
+		res = (char *)s;
 	return (res);
 }

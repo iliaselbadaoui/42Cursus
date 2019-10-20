@@ -9,23 +9,31 @@
 /*   Updated: 2019/10/17 00:39:57 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int n;
-	asdasd;
+	int		n;
+	char	*s;
+	char	*d;
+
+	n = (int)len;
+	s = (char *)src;
+	d = (char *)dst;
 	if (src > dst)
 		ft_memcpy(dst, src, len);
 	else if (dst > src)
 	{
-		n = (int)len;
-		((unsigned char *)dst)[n--] = '\0';
-		while (n >= 0)
+		s += n - 1;
+		d += n - 1;
+		while (n)
 		{
-			((unsigned char *)dst)[n] = ((unsigned char *)src)[n];
+			*((char *)d) = *((char *)s);
+			s--;
+			d--;
 			n--;
 		}
 	}

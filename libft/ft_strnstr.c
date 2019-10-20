@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-static int	ft_equals(const char *haystack, const char *needle)
+int		ft_strlen(char *str);
+
+static int	ft_equals(const char *haystack, const char *needle, size_t *len)
 {
-	char *res;
-
-	res = NULL;
-	while (*needle && *haystack)
+	while (*needle && *haystack && (*len)--)
 	{
-		if ((*needle) - (*haystack) != 0)
+		if (*(needle + 1) && !*(haystack + 1))
+			return (0);
+		else if (*needle - *haystack != 0)
 			return (0);
 		haystack++;
 		needle++;
@@ -29,14 +31,15 @@ static int	ft_equals(const char *haystack, const char *needle)
 
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
+	if(!ft_strlen((char *)needle))
+		return ((char *)haystack);
 	while (len && *haystack)
 	{
-		if (*haystack == *needle)
-		{
-			if (ft_equals(haystack, needle))
-				return ((char *)haystack);
-		}
-		len--;
+		if (ft_equals(haystack, needle, &len))
+			return ((char *)haystack);
+		if (len)
+			len--;
+		
 		haystack++;
 	}
 	return (NULL);
