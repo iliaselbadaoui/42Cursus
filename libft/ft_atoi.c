@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	long	res;
@@ -35,5 +37,5 @@ int	ft_atoi(const char *str)
 			return (0);
 		str++;
 	}
-	return ((int) res * sign);
+	return ((int)res * sign);
 }

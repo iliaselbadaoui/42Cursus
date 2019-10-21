@@ -1,14 +1,16 @@
 COM = gcc
 FLAGS = -Wall -Werror -Wextra -c
-SRCS = ft_*.c
+SRCS = ft*.c
 OUTS = *.o
 NAME = libft.a
 INC = libft.h
 
 all: $(NAME)
-	ar rc $(NAME) $(OUTS)
+	
 $(NAME):
 	$(COM) $(FLAGS) $(SRCS) -I $(INC)
+	ar rc $(NAME) $(OUTS)
+	ranlib $(NAME)
 clean :
 	rm -f *.o
 fclean :

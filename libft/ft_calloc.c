@@ -10,23 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	ft_bzero(void *s, size_t n);
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*area;
-	int		n;
 
-	n = 0;
 	if ((area = (void *)malloc(count * size)))
-	{
-		while ((size_t)n < count)
-		{
-			((long *)area)[n] = 0;
-			n++;
-		}
-	}
+		ft_bzero(area, size * count);
 	return (area);
 }

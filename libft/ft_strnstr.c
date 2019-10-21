@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-int		ft_strlen(char *str);
+#include "libft.h"
 
 static int	ft_equals(const char *haystack, const char *needle, size_t *len)
 {
@@ -31,7 +28,7 @@ static int	ft_equals(const char *haystack, const char *needle, size_t *len)
 
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if(!ft_strlen((char *)needle))
+	if (!ft_strlen((char *)needle))
 		return ((char *)haystack);
 	while (len && *haystack)
 	{
@@ -39,7 +36,6 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			return ((char *)haystack);
 		if (len)
 			len--;
-		
 		haystack++;
 	}
 	return (NULL);
