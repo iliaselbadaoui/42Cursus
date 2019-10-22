@@ -17,22 +17,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		len;
 	char	*new;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
-	new = (char *)malloc(len * sizeof(char ));
-	while (s1 || s2)
-	{
-		if (s1)
-		{
-			*new = *s1;
-			s1++;
-		}
-		else
-		{
-			*new = *s2;
-			s2++;
-		}
-		new++;
-	}
-	*new = '\0';
+	if (!(new = (char *)malloc(len * sizeof(char))))
+		return (NULL);
+	len = 0;
+	while (*s1)
+		new[len++] = *(s1++);
+	while (*s2)
+		new[len++] = *(s2++);
+	new[len] = '\0';
 	return (new);
 }
