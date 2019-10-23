@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,44 +12,44 @@
 
 #include "libft.h"
 
-static int	find(const char *set, int c)
+static	int		len(unsigned int nb)
 {
-	int i;
+	unsigned int	size;
 
-	i = 0;
-	while (set[i])
+	size = 0;
+	while (nb >= 10)
 	{
-		if (set[i] == (char)c)
-			return (1);
-		i++;
+		nb /= 10;
+		++size;
 	}
-	return (0);
+	return (int)(size + 1);
 }
 
-char		*ft_strtrim(char const *s, char const *set)
+char			*ft_itoa(int n)
 {
-	int		beg;
-	int		end;
-	int		i;
-	char	*p;
+	char			*arr;
+	unsigned int	nb;
+	unsigned int	i;
+	unsigned int	size;
 
-	beg = -1;
-	if (!s)
-		return (NULL);
-	end = ft_strlen(s);
-	while (s[++beg])
-		if (!find(set, s[beg]))
-			break ;
-	while (beg < end - 1)
-		if (!find(set, s[end - 1]))
-			break ;
-		else
-			end--;
-	if (!(p = malloc(end - beg + 1)))
-		return (NULL);
-	i = -1;
-	while (++i < (end - beg))
-		p[i] = s[beg + i];
-	p[i] = '\0';
-	return (p);
+	if (n < 0)
+		nb = n * -1;
+	else
+		nb = n;
+	size = taille(nb);
+	i = 0;
+	arr = malloc(size + 1 + (n < 0 ? 1 : 0));
+	if (arr == 0)
+		return (0);
+	if (n < 0 && (arr[i] = '-'))
+		size++;
+	i = size - 1;
+	while (nb >= 10)
+	{
+		arr[i--] = (nb % 10 + 48);
+		nb /= 10;
+	}
+	arr[i] = (nb % 10 + 48);
+	arr[size] = '\0';
+	return (arr);
 }

@@ -12,91 +12,88 @@
 
 #include "libft.h"
 
-static int		ft_is_delimiter(char del, char c)
+static	int			word_count(const char *s, char c)
 {
-	if (del == c)
-		return (1);
-	else
+	int count;
+	int i;
+	int wd;
+
+	count = 0;
+	wd = 0;
+	i = 0;
+	if (!s)
 		return (0);
-}
-
-static int		ft_word_count(char const *s, char c)
-{
-	int wc;
-	int rm;
-
-	wc = 0;
-	rm = 0;
-	while (*s)
+	while (*s != '\0')
 	{
-		if (!ft_is_delimiter(c, *s) && !rm)
+		if (*s == c)
+			wd = 0;
+		else if (wd == 0)
 		{
-			rm = 1;
-			wc++;
+			wd = 1;
+			count++;
 		}
-		while (ft_is_delimiter(c, *s))
-		{
-			if (rm)
-				rm = 0;
-			s++;
-		}
-		if (rm)
-			s++;
+		s++;
 	}
-	return (wc);
+	return (count);
 }
 
-static char		**ft_mem_alloc(char const *s, char c)
+static	int			max_word(const char *s, int i, char c)
 {
-	char		**wds;
-	int			wc;
-	int			ws;
+	int len;
+	int j;
 
-	wc = 0;
-	wds = (char **)malloc((ft_word_count(s, c) + 1) * sizeof(char **));
-	while (wc < ft_word_count(s, c) + 1)
+	len = 0;
+	j = i;
+	i = 0;
+	while (s[j] != c)
 	{
-		ws = 0;
-		while (*s && *s != c)
-		{
-			ws++;
-			s++;
-		}
-		while (*s == c)
-			s++;
-		if (ws)
-		{
-			wc++;
-			wds[wc - 1] = (char *)malloc((ws + 1) * sizeof(char));
-			wds[wc - 1][ws] = 0;
-		}
+		len++;
+		j++;
 	}
-	wds[wc] = NULL;
-	return (wds);
+	return (len);
 }
 
-char			**ft_split(char const *s, char c)
+static	void		*mfree(char **words, int j)
 {
-	char	**res;
-	int		wc;
-	int		i;
-	int		j;
+	while (j--)
+		free(words[j]);
+	free(words);
+	return (NULL);
+}
 
-	wc = 0;
-	res = ft_mem_alloc(s, c);
-	while (wc < ft_word_count(s, c))
+static	char		**malloc_fill(const char *s, char c, char **words)
+{
+	int i;
+	int k;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (s[i] != '\0' && j < word_count(s, c))
 	{
-		i = 0;
-		j = 0;
-		while (s[i] == c && s[i])
+		k = 0;
+		while (s[i] == c)
 			i++;
-		while (s[i] != c && s[i])
-		{
-			res[wc][j] = s[i];
-			j++;
-			i++;
-		}
-		wc++;
+		words[j] = malloc(sizeof(char) * max_word(s, i, c) + 1);
+		if (words[j] == NULL)
+			return (mfree(words, j));
+		while (s[i] != c)
+			words[j][k++] = s[i++];
+		words[j][k] = '\0';
+		j++;
 	}
-	return (res);
+	words[j] = 0;
+	return (words);
+}
+
+char				**ft_split(char const *s, char c)
+{
+	char	**words;
+
+	if (!s)
+		return (NULL);
+	words = malloc(sizeof(char *) * word_count(s, c) + 1);
+	if (!words)
+		return (NULL);
+	return (malloc_fill(s, c, words));
 }

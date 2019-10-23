@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static int	cherch(const char *set, int c)
+static int	find(const char *set, int c)
 {
 	int i;
 
@@ -16,28 +16,28 @@ static int	cherch(const char *set, int c)
 
 char		*ft_strtrim(char const *s, char const *set)
 {
-	int		debut;
-	int		fin;
+	int		beg;
+	int		end;
 	int		i;
 	char	*p;
 
-	debut = -1;
+	beg = -1;
 	if (!s)
 		return (NULL);
-	fin = ft_strlen(s);
-	while (s[++debut])
-		if (!cherch(set, s[debut]))
+	end = ft_strlen(s);
+	while (s[++beg])
+		if (!find(set, s[beg]))
 			break ;
-	while (debut < fin - 1)
-		if (!cherch(set, s[fin - 1]))
+	while (beg < end - 1)
+		if (!find(set, s[end - 1]))
 			break ;
 		else
-			fin--;
-	if (!(p = malloc(fin - debut + 1)))
+			end--;
+	if (!(p = malloc(end - beg + 1)))
 		return (NULL);
 	i = -1;
-	while (++i < (fin - debut))
-		p[i] = s[debut + i];
+	while (++i < (end - beg))
+		p[i] = s[beg + i];
 	p[i] = '\0';
 	return (p);
 }

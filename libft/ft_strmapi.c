@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,44 +12,22 @@
 
 #include "libft.h"
 
-static int	find(const char *set, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int i;
+	char			*new;
+	unsigned int	i;
 
 	i = 0;
-	while (set[i])
-	{
-		if (set[i] == (char)c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char		*ft_strtrim(char const *s, char const *set)
-{
-	int		beg;
-	int		end;
-	int		i;
-	char	*p;
-
-	beg = -1;
 	if (!s)
 		return (NULL);
-	end = ft_strlen(s);
-	while (s[++beg])
-		if (!find(set, s[beg]))
-			break ;
-	while (beg < end - 1)
-		if (!find(set, s[end - 1]))
-			break ;
-		else
-			end--;
-	if (!(p = malloc(end - beg + 1)))
+	new = (char *)malloc(ft_strlen((char *)s) + 1);
+	if (new == NULL)
 		return (NULL);
-	i = -1;
-	while (++i < (end - beg))
-		p[i] = s[beg + i];
-	p[i] = '\0';
-	return (p);
+	while (s[i])
+	{
+		new[i] = f(i, s[i]);
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
