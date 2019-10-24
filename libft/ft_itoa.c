@@ -36,7 +36,7 @@ char			*ft_itoa(int n)
 		nb = n * -1;
 	else
 		nb = n;
-	size = taille(nb);
+	size = len(nb);
 	i = 0;
 	arr = malloc(size + 1 + (n < 0 ? 1 : 0));
 	if (arr == 0)

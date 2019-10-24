@@ -28,7 +28,7 @@ static int	ft_equals(const char *haystack, const char *needle, size_t *len)
 
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (!ft_strlen((char *)needle))
+	if (!ft_strlen(needle))
 		return ((char *)haystack);
 	while (len && *haystack)
 	{
