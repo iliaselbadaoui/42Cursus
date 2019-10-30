@@ -21,5 +21,10 @@
 # include <string.h>
 # include <fcntl.h>
 
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+int		ft_strlen(const char *str);
+int		ft_contain_new_line(char *s, int buffer_size);
+char	*ft_realloc_str(char *ptr, size_t old_size, size_t new_size);
 int		get_next_line(int fd, char **line);
 #endif
