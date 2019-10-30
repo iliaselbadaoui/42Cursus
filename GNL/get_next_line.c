@@ -15,9 +15,9 @@
 int get_next_line(int fd, char **line)
 {
 	static char *remaining;
-	char *read_res;
-	size_t len;
-	size_t times;
+	char	read_res[BUFFER_SIZE];
+	size_t	len;
+	size_t	times;
 
 	times = 0;
 	while (read(fd, read_res, BUFFER_SIZE))
