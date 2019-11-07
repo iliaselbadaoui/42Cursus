@@ -2,11 +2,14 @@
 
 int main()
 {
-    int fd = open("just_nl.txt", O_RDONLY);
+    int fd = open("big.txt", O_RDONLY);
     char *line;
-    while (get_next_line(fd, &line))
+    while(get_next_line(fd, &line))
     {
         printf("%s\n", line);
-        free(line);
+        ft_free(&line);
     }
+    printf("%s\n", line);
+    ft_free(&line);
+    return (0);
 }

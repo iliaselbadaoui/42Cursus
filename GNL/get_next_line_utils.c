@@ -12,21 +12,21 @@
 
 #include "get_next_line.h"
 
-int		ft_contains_new_line(char *s)
+char		*ft_strchr(const char *s, int c)
 {
-	int i;
+	char *res;
 
-	i = 0;
+	res = NULL;
 	while (*s)
 	{
-		if (*(s++) == '\n')
-			break ;
-		i++;
+		if (*s == c)
+			return (res = (char *)s);
+		s++;
 	}
-	return (i);
+	return (NULL);
 }
 
-int		ft_strlen(const char *str)
+int			ft_strlen(const char *str)
 {
 	int	len;
 
@@ -38,7 +38,7 @@ int		ft_strlen(const char *str)
 	return (len);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	int		len;
 	char	*new;
@@ -57,44 +57,29 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+t_string	ft_strdup(const char *s)
 {
-	int i;
+	int			len;
+	int			i;
+	t_string	dst;
 
-	i = 0;
-	if (0 < size)
+	i = -1;
+	len = ft_strlen(s);
+	if ((dst = (t_string)malloc(len + 1)))
 	{
-		while (i < (int)size - 1 && src[i])
+		while (s[++i])
 		{
-			dst[i] = src[i];
-			i++;
+			dst[i] = s[i];
 		}
 		dst[i] = '\0';
+		return (dst);
 	}
-	return ((size_t)ft_strlen(src));
+	return (NULL);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_free(t_string *p)
 {
-	char			*res;
-	unsigned int	i;
-
-	if (!s || (int)start > ft_strlen(s))
-	{
-		res = (char *)malloc(1);
-		*res = '\0';
-		return (res);
-	}
-	if (!(res = (char *)malloc((len + 1) * sizeof(char))))
-		return (0);
-	s += start;
-	i = 0;
-	while (i < len)
-	{
-		res[i] = *s;
-		i++;
-		s++;
-	}
-	res[i] = '\0';
-	return (res);
+	if (*p != 0)
+		free(*p);
+	*p = 0;
 }

@@ -12,61 +12,84 @@
 
 #include "get_next_line.h"
 
-t_string		ft_get_remain_and_result(t_string *read_res)
+void	ft_help(t_string *line, t_string *buffer)
 {
-	int			nl_pos;
-	t_string	remain;
-
-	nl_pos = ft_contains_new_line(*read_res);
-	(*read_res)[nl_pos] = '\0';
-	remain = *read_res + nl_pos + 1;
-	return (remain);
+	t_string	hlp;
+	if(*line)
+	{
+		hlp = *line;
+		*line = ft_strjoin(*line, *buffer);
+		ft_free(&hlp);
+	}
+	else
+		*line = ft_strdup(*buffer);
 }
 
-int				ft_manage_remain(t_string *line, t_string *read_res, t_string *remain)
+int		ft_fill(t_string *remain, t_string *line)
 {
-	if(*remain)
+	t_string	nl;
+
+	if((nl = ft_strchr(*line, '\n')))
 	{
-		*read_res = *remain;
-		*remain = ft_get_remain_and_result(read_res);
-		*line = ft_strjoin(*line, *read_res);
-		if (ft_contains_new_line(*remain) < ft_strlen(*read_res))
-			return (1);
-		else if (ft_contains_new_line(*remain) == ft_strlen(*read_res))
+		*nl = '\0';
+		*remain = ft_strdup(nl + 1);
+		return (1);
+	}
+	return (0);
+}
+
+int		ft_manage(t_string *remain, t_string *line)
+{
+	t_string	nl;
+	t_string	tmp;
+	t_string	tmpL;
+
+	if((nl = ft_strchr(*remain, '\n')))
+	{
+		tmp = *remain;
+		*nl = '\0';
+		tmpL = *line;
+		*line = ft_strdup(*remain);
+		ft_free(&tmpL);
+		*remain = ft_strdup(nl + 1);
+		ft_free(&tmp);
+		return (1);
+	}
+	else
+	{
+		tmpL = *line;
+		*line = ft_strdup(*remain);
+		ft_free(&tmpL);
+		ft_free(remain);
+	}
+	return (0);
+}
+
+int		get_next_line(int fd, char **line)
+{
+	static t_string	remain[256];
+	t_string		buffer;
+	int				bytes;
+
+	if (!(buffer = (t_string)malloc(BUFFER_SIZE + 1)) ||
+		read(fd, NULL, 0) || fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	*line = strdup("");
+	if (remain[fd] && ft_manage(&remain[fd], line))
+	{
+		ft_free(&buffer);
+		return (1);
+	}
+	while((bytes = read(fd, buffer, BUFFER_SIZE)))
+	{
+		buffer[bytes] = '\0';
+		ft_help(line, &buffer);
+		if (ft_fill(&remain[fd], line))
 		{
-			*line = ft_strjoin(*line, *remain);
-			remain = 0;
-			return (0);
+			ft_free(&buffer);
+			return (1);
 		}
 	}
-	return (-1);
-}
-
-int				get_next_line(int fd, char **line)
-{
-	static t_string	remain;
-	t_string		read_res;
-	int				nl_pos;
-	int				bytes;
-	
-	if (fd < 0 || !line)
-		return (-1);
-	read_res = (t_string)malloc(BUFFER_SIZE + 1);
-	*line = (t_string)malloc(1);
-	if (remain)
-	{
-		if ((ft_manage_remain(line,&read_res, &remain)))
-			return (1);
-	}
-	while ((bytes = read(fd, read_res, BUFFER_SIZE)))
-	{
-		read_res[bytes] = '\0';
-		nl_pos = ft_contains_new_line(read_res);
-		if (nl_pos < ft_strlen(read_res))
-			remain = ft_get_remain_and_result(&read_res);
-		*line = ft_strjoin(*line, read_res);
-		if (remain)
-			break;
-	}
-	return ((bytes > 0) ? 1 : 0);
+	ft_free(&buffer);
+	return  (0);
 }
