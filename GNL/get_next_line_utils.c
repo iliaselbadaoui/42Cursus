@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/27 02:47:41 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/11/15 15:36:32 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (new);
 }
 
-t_string	ft_strdup(const char *s)
+char		*ft_strdup(const char *s)
 {
 	int			len;
 	int			i;
-	t_string	dst;
+	char		*dst;
 
 	i = -1;
 	len = ft_strlen(s);
-	if ((dst = (t_string)malloc(len + 1)))
+	if ((dst = (char *)malloc(len + 1)))
 	{
 		while (s[++i])
 		{
@@ -77,7 +77,7 @@ t_string	ft_strdup(const char *s)
 	return (NULL);
 }
 
-void	ft_free(t_string *p)
+void		ft_free(char **p)
 {
 	if (*p != 0)
 		free(*p);
