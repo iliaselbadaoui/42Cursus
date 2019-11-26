@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_init_types.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/13 08:10:18 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/13 08:10:20 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/21 12:40:03 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/23 18:41:06 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_init_types(t_types *types)
 {
-	int		len;
-	char	*res;
-
-	len = ft_strlen(s1);
-	if ((res = (char *)malloc((len + 1) * sizeof(char))))
-		ft_strlcpy(res, s1, len + 1);
-	return (res);
+	types->post_spaces = 0;
+	types->zeros = 0;
+	types->err = 1;
+	types->i = 0;
+	types->ui = 0;
+	types->ull = 0;
+	types->s = 0;
+	types->c = 0;
 }

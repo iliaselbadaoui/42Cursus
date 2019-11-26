@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 22:27:58 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/10 16:32:51 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/10/22 22:03:29 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/23 11:53:13 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_putstr_fd(char *s, int fd, int len)
 {
-	int i;
-
-	i = 0;
-	if (!size)
-		return (ft_strlen(src));
-	while (i < (int)size - 1 && src[i])
+	if (s == NULL)
+		return (ft_putstr_fd("(null)", 1, len));
+	while (*s != '\0' && len)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_putchar_fd(*s, fd);
+		s++;
+		len--;
 	}
-	dst[i] = '\0';
-	return ((size_t)ft_strlen(src));
 }

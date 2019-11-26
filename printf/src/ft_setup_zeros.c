@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_setup_zeros.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 22:27:58 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/10 16:32:51 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/23 18:04:20 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/26 06:19:04 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int		ft_setup_zeros(char *start, va_list *args)
 {
-	int i;
+	int res;
 
-	i = 0;
-	if (!size)
-		return (ft_strlen(src));
-	while (i < (int)size - 1 && src[i])
+	if (*start == '*')
+		return (va_arg(*args, int));
+	else
 	{
-		dst[i] = src[i];
-		i++;
+		res = ft_atoi(start);
 	}
-	dst[i] = '\0';
-	return ((size_t)ft_strlen(src));
+	return (res);
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/13 08:10:18 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/13 08:10:20 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/24 19:59:24 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/25 12:24:23 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_strdup(const char *s1)
+unsigned int	ft_abs(int val)
 {
-	int		len;
-	char	*res;
-
-	len = ft_strlen(s1);
-	if ((res = (char *)malloc((len + 1) * sizeof(char))))
-		ft_strlcpy(res, s1, len + 1);
-	return (res);
+	if (val >= 0)
+		return (val);
+	else
+		return (-val);
 }

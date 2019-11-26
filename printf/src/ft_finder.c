@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_finder.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 22:27:58 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/10 16:32:51 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/20 20:59:42 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/22 10:38:27 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	ft_finder(char *format, t_format_container *container)
 {
-	int i;
-
-	i = 0;
-	if (!size)
-		return (ft_strlen(src));
-	while (i < (int)size - 1 && src[i])
+	container->start = format;
+	while (*format)
 	{
-		dst[i] = src[i];
-		i++;
+		if (ft_match_conversion(*format))
+		{
+			container->end = format;
+			return (*format);
+		}
+		format++;
 	}
-	dst[i] = '\0';
-	return ((size_t)ft_strlen(src));
+	return (0);
 }

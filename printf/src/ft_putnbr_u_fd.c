@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_u_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 22:27:58 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/10/10 16:32:51 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/20 10:40:39 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/23 13:54:17 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_putnbr_u_fd(unsigned int n, int fd)
 {
-	int i;
-
-	i = 0;
-	if (!size)
-		return (ft_strlen(src));
-	while (i < (int)size - 1 && src[i])
+	if (n >= 10)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_putnbr_u_fd((n / 10), fd);
+		ft_putchar_fd((n % 10) + '0', fd);
 	}
-	dst[i] = '\0';
-	return ((size_t)ft_strlen(src));
+	else
+		ft_putchar_fd((n + '0'), fd);
 }
