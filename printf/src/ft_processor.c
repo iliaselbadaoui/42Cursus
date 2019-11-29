@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setup_zeros.c                                   :+:      :+:    :+:   */
+/*   ft_processor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/23 18:04:20 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/11/26 06:19:04 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/11/29 13:02:54 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/11/29 13:52:03 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_setup_zeros(char *start, va_list *args)
+void		ft_processor(t_format_container container)
 {
-	int res;
-
-	if (*start == '*')
-		return (va_arg(*args, int));
-	else
-	{
-		res = ft_atoi(start);
-	}
-	return (res);
+	printf("HELLO");
 }

@@ -17,7 +17,6 @@ int		ft_printf(const char *format, ...)
 	int					len;
 	va_list				args;
 	t_format_container	conatiner;
-	t_types				types;
 
 	va_start(args, format);
 	len = 0;
@@ -25,8 +24,7 @@ int		ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && ft_finder((char *)(format + 1), &conatiner))
 		{
-			types = ft_flags_processor(conatiner, &args, &len);
-			ft_parse_conversion(*(conatiner.end), types);
+			
 			format = conatiner.end;
 		}
 		else

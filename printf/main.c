@@ -23,6 +23,7 @@ int main()
 	//ft_parse_conversion('s', t, &p);
 	//ft_check_zeros('s', 120, &t, &p);
 	//ft_putstr_fd(t.s, 1, t.zeros);
-	printf("%d", ft_printf("%.*d",0,0));
+	//printf("%d", ft_printf("%.*d",0,0));
+	printf("%-*.*d", 5, 5);
 	return (0);/*%050000*d*/
 }
