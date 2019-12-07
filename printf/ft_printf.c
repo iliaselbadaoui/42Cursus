@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 17:33:27 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/11/23 10:33:16 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:53:32 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ int		ft_printf(const char *format, ...)
 	len = 0;
 	while (*format)
 	{
-		if (*format == '%' && ft_finder((char *)(format + 1), &conatiner))
+		ft_init_format(&conatiner);
+		if (*format == '%' && ft_finder((char *)(format + 1), &conatiner,
+			&args))
 		{
-			
-			format = conatiner.end;
+			ft_processor(conatiner);
+			format = conatiner.conv;
 		}
 		else
-			len += ft_putchar_fd(*format, 1);
+			ft_putchar_fd(*format, 1);
 		format++;
 	}
+	len = ft_putchar_fd(' ', 0);
 	va_end(args);
 	return (len);
 }

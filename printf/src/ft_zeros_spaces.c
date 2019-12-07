@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_zeros_spaces.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 22:03:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/01 14:27:16 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/02 19:45:32 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/06 11:43:15 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_putchar_fd(char c, int fd)
+int		ft_zeros_spaces(int value, int length)
 {
-	static	int len;
+	int size;
 
-	if (fd == 1)
+	size = value - length;
+	if (size >= 0)
 	{
-		write(fd, &c, 1);
-		len++;
+		return (size);
 	}
-	return (len);
+	else
+	{
+		return (0);
+	}
+}
+
+int		ft_printable_length(int value, int length)
+{
+	if (value < length && value >= 0)
+	{
+		return (value);
+	}
+	else
+	{
+		return (length);
+	}
 }

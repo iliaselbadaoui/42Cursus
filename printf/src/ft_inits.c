@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_inits.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 22:03:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/01 14:27:16 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/01 13:14:24 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/03 18:58:56 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_putchar_fd(char c, int fd)
+void	ft_init_format(t_format_container *holder)
 {
-	static	int len;
+	holder->conv = 0;
+	holder->mins = 0;
+	holder->prec = 0;
+	holder->prec_no_spec = 0;
+	holder->star = 0;
+	holder->zero = 0;
+	ft_init_type(&(holder->type));
+}
 
-	if (fd == 1)
-	{
-		write(fd, &c, 1);
-		len++;
-	}
-	return (len);
+void	ft_init_type(t_type *type)
+{
+	type->c = 0;
+	type->i = 0;
+	type->l = 0;
+	type->ui = 0;
+	type->s = 0;
 }

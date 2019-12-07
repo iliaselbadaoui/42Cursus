@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_char_times.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 22:03:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/01 14:27:16 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/02 17:07:20 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/03 18:55:41 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		ft_putchar_fd(char c, int fd)
+void	ft_char_times(char c, int times)
 {
-	static	int len;
-
-	if (fd == 1)
+	while (times > 0)
 	{
-		write(fd, &c, 1);
-		len++;
+		ft_putchar_fd(c, 1);
+		times--;
 	}
-	return (len);
 }
