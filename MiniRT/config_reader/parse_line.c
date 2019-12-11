@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 14:36:41 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/11 14:32:08 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/11 14:31:45 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/11 16:09:23 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<mlx.h>
-#include<math.h>
-#include "config_reader/config_reader.h"
+#include "config_reader.h"
+#include "../types.h"
 
+void	*ft_parse_line(const char *line)
+{
+	
+}

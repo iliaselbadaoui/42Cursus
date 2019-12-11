@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:52:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/10 20:46:59 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:07:17 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,27 @@ typedef struct	s_rgb
 }				t_rgb;
 typedef struct	s_position
 {
-	float x;
-	float y;
-	float z;
+	float 		x;
+	float 		y;
+	float 		z;
 }				t_position;
 typedef struct	s_resolution
 {
-	int height;
-	int width;
+	int 		height;
+	int 		width;
 }				t_resolution;
 typedef struct	s_camera
 {
 	t_position	pos;
 	int			fov;
 	t_position	orientation;
+	t_camera	*next;
+	t_camera	*previous;
 }				t_camera;
 typedef struct	s_amb_light
 {
-	t_rgb	rgb;
-	float	range;
+	t_rgb		rgb;
+	float		range;
 }				t_amb_light;
 typedef struct	s_light
 {
@@ -81,4 +83,5 @@ typedef struct	s_triange
 	t_position	third;
 	t_rgb		rgb;
 }				t_triange;
+
 #endif

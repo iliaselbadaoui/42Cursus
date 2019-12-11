@@ -6,11 +6,11 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:19 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/11/16 12:55:29 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/11 11:17:48 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "config_reader.h"
 
 void	fill_line(char **line, char *buffer)
 {

@@ -6,11 +6,11 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/11/15 15:36:32 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/11 11:17:38 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "config_reader.h"
 
 char		*ft_strchr(const char *s, int c)
 {
