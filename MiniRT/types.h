@@ -5,83 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 16:52:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/11 16:07:17 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/26 18:50:23 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
+typedef char *string;
+typedef struct	s_equation
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+	double	s0;
+	double	s1;
+}				t_equation;
 typedef struct	s_rgb
 {
-	int r;
-	int g;
-	int b;
+	unsigned short	g;
+	unsigned short	r;
+	unsigned short	b;
 }				t_rgb;
-typedef struct	s_position
+typedef struct	s_vec
 {
-	float 		x;
-	float 		y;
-	float 		z;
-}				t_position;
-typedef struct	s_resolution
+	double	x;
+	double	y;
+	double	z;
+}				t_vec;
+typedef struct	s_ray
 {
-	int 		height;
-	int 		width;
-}				t_resolution;
-typedef struct	s_camera
-{
-	t_position	pos;
-	int			fov;
-	t_position	orientation;
-	t_camera	*next;
-	t_camera	*previous;
-}				t_camera;
-typedef struct	s_amb_light
-{
-	t_rgb		rgb;
-	float		range;
-}				t_amb_light;
-typedef struct	s_light
-{
-	t_position	pos;
-	t_rgb		rgb;
-	float		range;
-}				t_light;
+	t_vec	org;
+	t_vec	dir;
+}				t_ray;
+
 typedef struct	s_spher
 {
-	t_position	pos;
-	t_rgb		rgb;
-	float		diameter;
+	t_vec	center;
+	t_rgb	color;
+	double	diameter;
 }				t_spher;
-typedef struct	s_plane
+typedef struct	s_camera
 {
-	t_position	pos;
-	t_rgb		rgb;
-	t_position	orientation;
-}				t_plane;
-typedef struct	s_square
+	t_vec	pos;
+	t_vec	normal;
+	int		fov;
+}				t_camera;
+typedef struct	s_object
 {
-	t_position	pos;
-	t_rgb		rgb;
-	t_position	orientation;
-	float		side;
-}				t_square;
-typedef struct	s_cylindre
+	string			type;
+	void			*content;
+	struct s_object	*next;
+}				t_object;
+typedef struct	s_light
 {
-	t_position	pos;
-	t_rgb		rgb;
-	t_position	orientation;
-	float		height;
-	float		diameter;
-}				t_cylindre;
-typedef struct	s_triange
+	t_vec	pos;
+	float	range;
+	t_rgb	color;
+}				t_light;
+typedef struct	s_result
 {
-	t_position	first;
-	t_position	second;
-	t_position	third;
-	t_rgb		rgb;
-}				t_triange;
-
+	int		flag;
+	t_rgb	color;
+}				t_result;
 #endif

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config_reader.c                                    :+:      :+:    :+:   */
+/*   double_abs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 14:27:57 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/11 14:14:55 by ielbadao         ###   ########.fr       */
+/*   Created: 2019/12/26 21:24:20 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/26 21:24:54 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config_reader.h"
-#include "../types.h"
-
-void	config_processor(char *path)
+double	double_abs(double d)
 {
-	int configs = open(path, O_RDONLY);
-	
+	if (d < 0)
+		return (-d);
+	return (d);
 }
