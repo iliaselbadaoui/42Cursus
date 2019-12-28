@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:32:48 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/27 14:54:43 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/28 19:00:05 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ t_vec			vec_cross(t_vec v1, t_vec v2);
 t_vec			vec_init(double x, double y, double z);
 t_ray			ray_init(t_vec org, t_vec dir);
 int				rgb_to_int(t_rgb rgb);
+double			climb_rgb(double min, double rgb_shadow, double max);
+t_rgb			add_rgb(t_rgb c1, t_rgb c2);
+t_rgb			rgb(unsigned short r, unsigned short g, unsigned short b);
 t_rgb			rgb_times_double(t_rgb rgb, double d);
 t_result		check_intersections(t_object lst, t_ray ray, double *t);
 t_result		check_object(t_object lst, t_ray ray, double *solution);
