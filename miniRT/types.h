@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   types.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
+/*   Updated: 2019/12/30 15:37:19 by ielbadao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef TYPES_H
+# define TYPES_H
+# define SUCCESS	0
+# define FAILURE	-1
+
+typedef char			*t_string;
+typedef struct	s_equation
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+	double	s0;
+	double	s1;
+}				t_equation;
+typedef struct	s_rgb
+{
+	unsigned short	r;
+	unsigned short	g;
+	unsigned short	b;
+}				t_rgb;
+typedef struct	s_vec
+{
+	double	x;
+	double	y;
+	double	z;
+}				t_vec;
+typedef struct	s_ray
+{
+	t_vec	org;
+	t_vec	dir;
+}				t_ray;
+typedef struct	s_plane
+{
+	t_vec	point;
+	t_vec	normal;
+	t_rgb	color;
+}				t_plane;
+typedef struct	s_spher
+{
+	t_vec	center;
+	t_rgb	color;
+	double	diameter;
+}				t_spher;
+typedef struct	s_camera
+{
+	t_vec	pos;
+	t_vec	normal;
+	int		fov;
+}				t_camera;
+typedef struct	s_object
+{
+	t_string		type;
+	void			*content;
+	struct s_object	*next;
+}				t_object;
+typedef struct	s_light
+{
+	t_vec	pos;
+	float	range;
+	t_rgb	color;
+}				t_light;
+typedef struct	s_ambient
+{
+	t_rgb	color;
+	double	range;
+}				t_ambient;
+
+typedef struct	s_result
+{
+	int		flag;
+	t_rgb	color;
+}				t_result;
+#endif

@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"geometry.h": "c",
+		"stdio.h": "c",
+		"minirt.h": "c",
+		"complex": "c",
+		"cmath": "c",
+		"config.h": "c",
+		"output": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
