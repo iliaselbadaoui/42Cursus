@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:32:48 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/29 21:14:06 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/30 17:45:03 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ double			min(double n1, double n2);
 t_rgb			rgb_times_double(t_rgb rgb, double d);
 t_result		check_intersections(t_object lst, t_ray ray, double *t);
 t_result		check_object(t_object lst, t_ray ray, double *solution);
+int				plane_intersect(t_plane plane, t_ray ray, double *t);
 #endif
