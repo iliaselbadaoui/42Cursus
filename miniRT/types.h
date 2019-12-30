@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/30 15:37:19 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/30 16:45:17 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,18 @@
 # define SUCCESS	0
 # define FAILURE	-1
 
-typedef char			*t_string;
+typedef char	*t_string;
+typedef struct	s_resolution
+{
+	int		height;
+	int		width;
+}				t_resolution;
+typedef struct	s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+}				t_mlx;
 typedef struct	s_equation
 {
 	double	a;
