@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/30 15:37:13 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/02 01:13:21 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <string.h>
 # include <fcntl.h>
 # include "../types.h"
+# include "../utils/utils.h"
 # include "../libft/libft.h"
 
-void			ft_free(char **p);
 void			fill_line(char **line, char *buffer);
 int				process_line(char **line, char **remain);
 int				process_remain(char **remain, char **line);

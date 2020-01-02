@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/30 16:37:29 by ielbadao         ###   ########.fr       */
+/*   Updated: 2019/12/31 13:55:29 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 	t_spher		sp;
 	t_ambient	amb;
 
-	sp.center.x = 200;sp.center.y = 150;sp.center.z = 10;
-	sp.diameter = 200;
+	sp.center.x = 300;sp.center.y = 300;sp.center.z = 100;
+	sp.diameter = 400;
 	sp.color = rgb(255, 7, 7);
 	t_light light;
 	light.color.r = 255;light.color.g = 255;light.color.b = 255;
@@ -39,7 +39,7 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 		y = 0;
 		while (y <= resolution.height)
 		{
-			t_ray ray = ray_init(vec_init(x, y, cam.pos.z), cam.normal);
+			t_ray ray = ray_init(vec_init(x, y, cam.pos.z), vec_init(0,0,1));
 			double t;
 			if (spher_intersect(sp, ray, &t))
 			{

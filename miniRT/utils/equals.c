@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   equals.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:36:25 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/29 17:48:23 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/01 17:18:50 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int		equals(t_string s1, t_string s2)
 {
+	int res;
+
+	res = 0;
 	while(*s1 == *s2)
 	{
 		if (*(s1 + 1) != *(s2 + 1))
-			return (0);
+		{
+			res = 0;
+			break ;
+		}
+		else if (res != 1)
+			res = 1;
 		s1++;
 		s2++;
 	}

@@ -6,7 +6,8 @@
 		"complex": "c",
 		"cmath": "c",
 		"config.h": "c",
-		"output": "c"
+		"output": "c",
+		"utils.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   add_object_node.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/01 19:05:10 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/01 18:48:45 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/02 01:09:58 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+void	add_object_node(t_object *head, t_object *new)
 {
-	int			fd;
-	int			res;
-	t_string	line;
-	t_object	*head;
+	t_object *tmp;
 
-	fd  = open(scene, O_RDONLY);
-	head = NULL;
-	while ((res = get_next_line(fd, &line)) > 0)
-	{
-		printf("%s\n", line);
-	}
-	printf("%s\n", line);
-	if ()
-	return (head);
+	tmp = head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }

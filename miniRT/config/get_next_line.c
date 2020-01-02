@@ -6,18 +6,11 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:19 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/29 18:21:49 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/02 01:13:59 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
-
-void	ft_free(char **p)
-{
-	if (*p != 0)
-		free(*p);
-	*p = 0;
-}
 
 void	fill_line(char **line, char *buffer)
 {
