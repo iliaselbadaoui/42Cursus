@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   fill_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/09 15:34:59 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/09 15:55:32 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+t_generic		fill_plane(t_string *props)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
+	t_generic	res;
 
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
-	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
-	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	if (object_props_count(props) != 3)
+		errcode(1);
+	res.plane = (t_plane *)malloc(sizeof(t_plane));
+	res.plane->point = fill_vec(props[0]);
+	res.plane->normal = fill_vec(props[1]);
+	res.plane->color = fill_rgb(props[2]);
+	return (res);
 }

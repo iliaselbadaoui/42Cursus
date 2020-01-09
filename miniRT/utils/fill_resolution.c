@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_object_node.c                                  :+:      :+:    :+:   */
+/*   fill_resolution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/01 18:48:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 10:38:44 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/04 18:18:07 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/09 11:39:04 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	add_object_node(t_object **head, t_object *new)
+t_generic		fill_resolution(t_string	*props)
 {
-	t_object *tmp;
+	t_generic	res;
 	
-	tmp = *head;
-	if (tmp == NULL)
-		*head = new;
+	if (object_props_count(props) != 2)
+		errcode(1);
+	res.res = (t_resolution *)malloc(sizeof(t_resolution));
+	if (is_number(*props) == 1)
+		(res.res)->width = ft_atoi(*props);
 	else
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		ft_free((void **)&(res.res));
+		errcode(2);
 	}
+	if (is_number(*(props + 1)) == 1)
+		(res.res)->height = ft_atoi(*props + 1);
+	else
+	{
+		ft_free((void **)&(res.res));
+		errcode(2);
+	}
+	return (res);
 }

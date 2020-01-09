@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   create_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/02 18:45:34 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/02 19:46:41 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+t_resolution	*create_resolution(int width, int height)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
+	t_resolution	*resolution;
 
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
-	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
-	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	resolution = (t_resolution *)malloc(sizeof(t_resolution));
+	resolution->width = width;
+	resolution->height = height;
+
+	return (resolution);
 }

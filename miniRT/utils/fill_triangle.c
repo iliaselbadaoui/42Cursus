@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   fill_triangle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/09 17:13:13 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/09 17:19:04 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+t_generic		fill_triangle(t_string *props)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
-
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
-	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
-	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	t_generic res;
+	
+	if (object_props_count(props) != 4)
+		errcode(1);
+	res.tr = (t_triangle *)malloc(sizeof(t_triangle));
+	(res.tr)->p1 = fill_vec(props[0]);
+	(res.tr)->p1 = fill_vec(props[1]);
+	(res.tr)->p3 = fill_vec(props[2]);
+	(res.tr)->color = fill_rgb(props[3]);
+	return (res);
 }

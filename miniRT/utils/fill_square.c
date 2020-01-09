@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   fill_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/09 16:39:28 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/09 17:06:09 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+t_generic		fill_square(t_string *props)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
-
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
+	t_generic res;
+	
+	if (object_props_count(props) != 4)
+		errcode(1);
+	res.sq = (t_square *)malloc(sizeof(t_square));
+	(res.sq)->point = fill_vec(props[0]);
+	(res.sq)->normal = fill_vec(props[1]);
+	(res.sq)->side = atod(props[2]);
+	if ((res.sq)->side < 0)
 	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
+		free(res.sq);
+		errcode(8);
 	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	(res.sq)->color = fill_rgb(props[3]);
+	return (res);
 }

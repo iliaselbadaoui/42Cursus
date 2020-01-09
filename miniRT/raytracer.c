@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/31 13:55:29 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/05 13:15:57 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,45 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 	t_object	lst;
 	t_spher		sp;
 	t_ambient	amb;
+	t_plane		plane;
 
-	sp.center.x = 300;sp.center.y = 300;sp.center.z = 100;
-	sp.diameter = 400;
-	sp.color = rgb(255, 7, 7);
+	plane.point = vec_init(5, 0, 5);
+	plane.normal = vec_init(5, 1, 5);
+	plane.color = rgb(41, 128, 185);
+	sp.center = vec_init(0,0, -100);
+	sp.diameter = 10;
+	sp.color = rgb(231, 76, 60);
 	t_light light;
 	light.color.r = 255;light.color.g = 255;light.color.b = 255;
 	amb.color.r = 255;amb.color.g = 255;amb.color.b = 255;
-	amb.range = .2;
-	light.pos = vec_init(100, 150, 0);
+	amb.range = .4;
+	light.pos = vec_init(100, 50, -100);
 	light.range = .6;
 	x = 0;
-	while (x <= resolution.width)
+	while (x < resolution.width)
 	{
 		y = 0;
-		while (y <= resolution.height)
+		while (y < resolution.height)
 		{
-			t_ray ray = ray_init(vec_init(x, y, cam.pos.z), vec_init(0,0,1));
+			t_vec ray_dir = vec_init(x, y, cam.pos.z);
+			ray_dir.x = (2 * (x + 0.5)/(double)resolution.width - 1)*tan(deg_to_rad(cam.fov) / 2)*resolution.width/(double)resolution.height;
+			ray_dir.y = (1 - 2 * (y + 0.5)/(double)resolution.height)*tan(deg_to_rad(cam.fov) / 2);
+			ray_dir.z = cam.pos.z;
+			t_ray ray = ray_init(cam.pos, ray_dir);
 			double t;
+			double r;
+			t = r = INFINITY;
+			// if (plane_intersect(plane, ray, &r))
+			// {
+			// 	t_vec pi = vec_add(ray.dir,vec_times_double(ray.dir, r));
+			// 	t_vec hp = vec_diff(light.pos, plane.point);
+			// 	double dot = vec_dot(plane.normal,normalize_vect(hp));
+			// 	t_rgb col = add_rgb(rgb_times_double(plane.color, light.range*dot), rgb_times_double(plane.color, amb.range));	
+			// 	put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
+			// }
 			if (spher_intersect(sp, ray, &t))
 			{
-				t_vec pi = vec_add(ray.org,vec_times_double(ray.dir, t));
+				t_vec pi = vec_add(ray.dir,vec_times_double(ray.dir, t));
 				t_vec hp = vec_diff(light.pos, sp.center);
 				t_vec normal = get_sphers_normal(sp, pi);
 				double dot = vec_dot(normalize_vect(normal),normalize_vect(hp));

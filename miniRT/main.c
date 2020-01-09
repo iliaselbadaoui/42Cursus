@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 18:24:47 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/31 00:07:45 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/04 14:14:41 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int main(int argc, char **argv)
 
 	r.height = 768;
 	r.width = 1366;
-	cam.pos = vec_init(100, 150, 0);
-	cam.fov = 80;
-	cam.normal = vec_init(0,0,1);
+	cam.pos = vec_init(0, 0, 5);
+	cam.fov = 60;
+	cam.normal = vec_init(0,0,-1);
 	mlx.mlx = mlx_init();
 	mlx.img = mlx_new_image(mlx.mlx, r.width, r.height);
 	mlx.win = mlx_new_window(mlx.mlx, r.width, r.height, "miniRT");

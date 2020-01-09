@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:47:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/02 01:13:21 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/07 13:19:50 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 void			fill_line(char **line, char *buffer);
 int				process_line(char **line, char **remain);
 int				process_remain(char **remain, char **line);
+void			fill_list(t_object **head, t_string *components);
 int				get_next_line(int fd, char **line);
 t_object		*reader(t_string scene);
-t_object		*line_parser(t_string line);
+void			line_parser(t_string line, t_object **obj);
 #endif

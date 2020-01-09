@@ -6,14 +6,14 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/30 16:45:17 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/09 16:47:34 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 # define SUCCESS	0
-# define FAILURE	-1
+# define FAILURE	1
 
 typedef char	*t_string;
 typedef struct	s_resolution
@@ -71,12 +71,6 @@ typedef struct	s_camera
 	t_vec	normal;
 	int		fov;
 }				t_camera;
-typedef struct	s_object
-{
-	t_string		type;
-	void			*content;
-	struct s_object	*next;
-}				t_object;
 typedef struct	s_light
 {
 	t_vec	pos;
@@ -88,10 +82,54 @@ typedef struct	s_ambient
 	t_rgb	color;
 	double	range;
 }				t_ambient;
-
+typedef struct	s_square
+{
+	t_vec	point;
+	t_vec	normal;
+	double	side;
+	t_rgb	color;
+}				t_square;
+typedef struct	s_cylinder
+{
+	t_vec	point;
+	t_vec	normal;
+	double	diameter;
+	double	height;
+	t_rgb	color;
+}				t_cylinder;
+typedef struct	s_triangle
+{
+	t_vec	p1;
+	t_vec	p2;
+	t_vec	p3;
+	t_rgb	color;
+}				t_triangle;
 typedef struct	s_result
 {
 	int		flag;
 	t_rgb	color;
 }				t_result;
+typedef struct	s_generic
+{
+	t_resolution	*res;
+	t_ambient		*amb;
+	t_camera		*cam;
+	t_light			*light;
+	t_spher			*sp;
+	t_plane			*plane;
+	t_square		*sq;
+	t_cylinder		*cy;
+	t_triangle		*tr;
+}				t_generic;
+typedef struct	s_object
+{
+	t_string		type;
+	t_generic		content;
+	struct s_object	*next;
+}				t_object;
+struct			s_flag
+{
+	int		resolution;
+	int		ambient;
+}				g_flag;
 #endif

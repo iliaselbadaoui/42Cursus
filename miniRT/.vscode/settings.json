@@ -7,7 +7,8 @@
 		"cmath": "c",
 		"config.h": "c",
 		"output": "c",
-		"utils.h": "c"
+		"utils.h": "c",
+		"cstdlib": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

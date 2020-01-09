@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 01:12:07 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/02 01:18:30 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/02 19:50:56 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	clear_object_list(t_object *head)
 {
 	t_object	*tmp;
 
-	while ((tmp = get_before_last(head)) != head)
+	tmp = head;
+	while (tmp)
 	{
-		ft_free(&(tmp->content));
-		ft_free(&tmp);
+		head = head->next;
+		ft_free((void **)&(tmp->content));
+		ft_free((void **)&tmp);
+		tmp = head;
 	}
-	ft_free(&(tmp->content));
-	ft_free(&tmp);
 }

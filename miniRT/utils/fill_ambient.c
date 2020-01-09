@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_object_node.c                                  :+:      :+:    :+:   */
+/*   fill_ambient.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/01 18:48:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 10:38:44 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/07 09:50:01 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/08 11:18:20 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	add_object_node(t_object **head, t_object *new)
+t_generic		fill_ambient(t_string *props)
 {
-	t_object *tmp;
+	t_generic	amb;
 	
-	tmp = *head;
-	if (tmp == NULL)
-		*head = new;
+	if (object_props_count(props) != 2)
+		errcode(1);
+	amb.amb = (t_ambient *)malloc(sizeof(t_ambient));
+	if (is_number(*props))
+	{
+		
+		amb.amb->range = atod(*props);
+		if (amb.amb->range < 0 || amb.amb->range > 1)
+		{
+			ft_free((void **)&(amb.amb));
+			errcode(4);
+		}
+	}
 	else
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		errcode(2);
+		ft_free((void **)&(amb.amb));
 	}
+	amb.amb->color = fill_rgb(*(props + 1));
+	return (amb);
 }

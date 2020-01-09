@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   is_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/04 17:28:58 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/07 11:49:48 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+int			is_number(t_string	input)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
+	int		res;
 
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
+	res = 1;
+	if (*input == '-')
 	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
+		input++;
+		res += 3;
 	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	while ((*input))
+	{
+		if (((*input) < '0' || (*input) > '9') && (*input) != '.')
+			return (0);
+		if ((*input) == '.')
+			res += 2;
+		input++;
+	}
+	if (*(input - 1) == '.')
+		res = 0;
+	return (res);
 }

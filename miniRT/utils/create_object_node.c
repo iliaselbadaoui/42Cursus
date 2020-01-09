@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_object_node.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielbadao <ielbadao@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 18:13:31 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/01 18:48:51 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:13:01 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_object	*create_object_node(t_string type, void *content)
+t_object	*create_object_node(t_string type, t_generic content)
 {
 	t_object	*node;
 
@@ -20,4 +20,5 @@ t_object	*create_object_node(t_string type, void *content)
 	node->type = type;
 	node->content = content;
 	node->next = NULL;
+	return (node);
 }

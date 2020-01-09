@@ -6,37 +6,60 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 18:08:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/01 19:05:07 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/09 17:22:13 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-int		match_type(t_string type)
+static void	fill_arr(t_string *arr)
 {
-	t_string arr[] = ["R", "A",
-					  "sp", "pl",
-					  "tr", "cy",
-					  "sq","c",
-					  "l", "0"];
-	while (arr)
-	{
-		if (!equals(type, *arr))
-			return (0);
-	}
-	return (1);
+	arr[0] = "R";
+	arr[1] = "A";
+	arr[2] = "c";
+	arr[3] = "l";
+	arr[4] = "sq";
+	arr[5] = "sp";
+	arr[6] = "pl";
+	arr[7] = "tr";
+	arr[8] = "cy";
+	arr[9] = NULL;
 }
 
-t_object	*line_parser(t_string line)
+int			match_type(t_string type)
 {
-	t_string	*components;
-	t_object	*obj;
+	t_string	arr[10];
+	int			i;
+
+	fill_arr(arr);
+	i = 0;
+	while (arr[i])
+	{
+		if (equals(type, arr[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void		line_parser(t_string line, t_object **obj)
+{
+	t_string		*components;
+	t_string		*tmp;
 
 	components = ft_split(line, ' ');
+	if (object_props_count(components) == 0)
+	{
+		free_2d(&components);
+		return ;
+	}
+	tmp = components;
 	if (!match_type(*components))
 	{
-		perror("Undefined type.");
-		exit(FAILURE);
+		free_2d(&components);
+		errcode(0);
 	}
-	return (obj);
+	else
+		fill_list(obj, tmp);
+	free_2d(&components);
 }

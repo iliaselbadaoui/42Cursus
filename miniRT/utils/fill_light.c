@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   fill_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/08 17:26:11 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/09 14:46:23 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/09 15:37:38 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+t_generic		fill_light(t_string *props)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
-
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
+	t_generic res;
+	
+	if (object_props_count(props) != 3)
+		errcode(1);
+	res.light = (t_light *)malloc(sizeof(t_light));
+	(res.light)->pos = fill_vec(props[0]);
+	(res.light)->range = atod(props[1]);
+	if (!is_in_range(0, (res.light)->range, 1))
 	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
+		free(res.light);
+		errcode(4);
 	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	(res.light)->color = fill_rgb(props[2]);
+	return (res);
 }
