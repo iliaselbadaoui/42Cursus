@@ -6,19 +6,19 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 11:35:59 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 15:37:05 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 16:31:16 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static void		fill_rgb_help(t_rgb *rgb, t_string *parts)
+static void		fill_rgb_help(t_rgb *res, t_string *parts)
 {
 	res->r = ft_atoi(parts[0]);
 	res->g = ft_atoi(parts[1]);
 	res->b = ft_atoi(parts[2]);
-	if (!is_in_range(0, res.r, 255) || !is_in_range(0, res.g, 255) ||
-		!is_in_range(0, res.b, 255))
+	if (!is_in_range(0, res->r, 255) || !is_in_range(0, res->g, 255) ||
+		!is_in_range(0, res->b, 255))
 	{
 		errcode(5);
 	}
@@ -39,7 +39,7 @@ t_rgb			fill_rgb(t_string rgb)
 			is_number(parts[2]) == 1)
 	{
 		free_2d(&parts);
-		fill_rgb_help(&rgb, parts);
+		fill_rgb_help(&res, parts);
 	}
 	else
 	{
