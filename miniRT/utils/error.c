@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 12:42:09 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 17:44:19 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:06:44 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_string	errs[] = {
 			"Error\nrgb color not int the rang [(0, 0, 0) , (255, 255, 255)].",
 			"Error\nduplicated UNIQUE object",
 			"Error\nthe field of view should be a positive intger in the range [0, 180]",
-			"Error\nall distances should be of positive values, you piece of shit"
+			"Error\nall distances should be of positive values, you piece of shit",
+			"Error\nthe normal vector coordinates should be in the range [-1, 1]"
 			};
 
 void		errcode(int code)

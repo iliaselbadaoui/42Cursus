@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:01:49 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 17:17:16 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:08:21 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ t_generic		fill_cylinder(t_string *props)
 	{
 		free(res.cy);
 		errcode(8);
+	}
+	if (!is_in_range(-1, res.cy->normal.x, 1) ||
+		!is_in_range(-1, res.cy->normal.y, 1) ||
+		!is_in_range(-1, res.cy->normal.z, 1))
+	{
+		free(res.cy);
+		errcode(9);
 	}
 	(res.cy)->color = fill_rgb(props[4]);
 	return (res);

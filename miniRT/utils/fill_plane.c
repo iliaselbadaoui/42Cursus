@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:34:59 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 15:55:32 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:08:30 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ t_generic		fill_plane(t_string *props)
 	res.plane = (t_plane *)malloc(sizeof(t_plane));
 	res.plane->point = fill_vec(props[0]);
 	res.plane->normal = fill_vec(props[1]);
+	if (!is_in_range(-1, res.plane->normal.x, 1) ||
+		!is_in_range(-1, res.plane->normal.y, 1) ||
+		!is_in_range(-1, res.plane->normal.z, 1))
+	{
+		free(res.plane);
+		errcode(9);
+	}
 	res.plane->color = fill_rgb(props[2]);
 	return (res);
 }
