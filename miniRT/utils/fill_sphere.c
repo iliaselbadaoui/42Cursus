@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:01:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 16:18:27 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:26:08 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_generic		fill_sphere(t_string *props)
 {
 	t_generic res;
-	
+
 	if (object_props_count(props) != 3)
 		errcode(1);
 	res.sp = (t_spher *)malloc(sizeof(t_spher));

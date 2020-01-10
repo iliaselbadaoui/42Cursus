@@ -6,12 +6,11 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 17:13:41 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 12:16:11 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:20:28 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
 
 double		floating_part(t_string after_point)
 {
@@ -43,6 +42,7 @@ double		atod(t_string input)
 	double		res;
 	double		sign;
 	t_string	point;
+
 	sign = 1;
 	if (*input == '-')
 	{

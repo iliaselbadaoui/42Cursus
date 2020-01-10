@@ -6,13 +6,25 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 11:35:59 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 18:20:53 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:37:05 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_rgb		fill_rgb(t_string rgb)
+static void		fill_rgb_help(t_rgb *rgb, t_string *parts)
+{
+	res->r = ft_atoi(parts[0]);
+	res->g = ft_atoi(parts[1]);
+	res->b = ft_atoi(parts[2]);
+	if (!is_in_range(0, res.r, 255) || !is_in_range(0, res.g, 255) ||
+		!is_in_range(0, res.b, 255))
+	{
+		errcode(5);
+	}
+}
+
+t_rgb			fill_rgb(t_string rgb)
 {
 	t_string	*parts;
 	t_rgb		res;
@@ -26,12 +38,8 @@ t_rgb		fill_rgb(t_string rgb)
 	else if (is_number(parts[0]) == 1 && is_number(parts[1]) == 1 &&
 			is_number(parts[2]) == 1)
 	{
-		res.r = ft_atoi(parts[0]);
-		res.g = ft_atoi(parts[1]);
-		res.b = ft_atoi(parts[2]);
-		if (!is_in_range(0, res.r, 255) || !is_in_range(0, res.g, 255) ||
-			!is_in_range(0, res.b, 255))
-			errcode(5);
+		free_2d(&parts);
+		fill_rgb_help(&rgb, parts);
 	}
 	else
 	{

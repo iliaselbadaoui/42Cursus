@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:36:25 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/05 10:53:44 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:22:41 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		equals(t_string s1, t_string s2)
 {
 	if (s1 == s2)
 		return (1);
-	while(*s1 && *s2)
+	while (*s1 && *s2)
 	{
 		if (*s1 != *s2)
 			return (0);

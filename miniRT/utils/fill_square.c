@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:39:28 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 15:14:46 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:37:26 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_generic		fill_square(t_string *props)
 {
 	t_generic res;
-	
+
 	if (object_props_count(props) != 4)
 		errcode(1);
 	res.sq = (t_square *)malloc(sizeof(t_square));

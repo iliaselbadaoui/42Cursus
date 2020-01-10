@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:46:23 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 15:37:38 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:23:53 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_generic		fill_light(t_string *props)
 {
 	t_generic res;
-	
+
 	if (object_props_count(props) != 3)
 		errcode(1);
 	res.light = (t_light *)malloc(sizeof(t_light));

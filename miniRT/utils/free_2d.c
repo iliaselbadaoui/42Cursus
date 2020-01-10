@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:32:10 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 10:56:26 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:40:20 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_2d(t_string **arr)
 {
 	t_string	*tmp;
-	
+
 	tmp = *arr;
 	while (*tmp)
 	{

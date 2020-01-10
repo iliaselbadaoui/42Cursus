@@ -6,11 +6,11 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:08:07 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 12:01:45 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:23:00 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"utils.h"
+#include "utils.h"
 
 t_generic	fill_camera(t_string *props)
 {

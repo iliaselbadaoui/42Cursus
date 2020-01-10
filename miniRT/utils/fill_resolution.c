@@ -6,16 +6,16 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 18:18:07 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 11:39:04 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:24:36 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_generic		fill_resolution(t_string	*props)
+t_generic		fill_resolution(t_string *props)
 {
 	t_generic	res;
-	
+
 	if (object_props_count(props) != 2)
 		errcode(1);
 	res.res = (t_resolution *)malloc(sizeof(t_resolution));

@@ -6,13 +6,13 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:28:58 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/07 11:49:48 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:37:42 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int			is_number(t_string	input)
+int			is_number(t_string input)
 {
 	int		res;
 

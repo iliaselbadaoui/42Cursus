@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 18:45:34 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/02 19:46:41 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:19:30 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ t_resolution	*create_resolution(int width, int height)
 	resolution = (t_resolution *)malloc(sizeof(t_resolution));
 	resolution->width = width;
 	resolution->height = height;
-
 	return (resolution);
 }

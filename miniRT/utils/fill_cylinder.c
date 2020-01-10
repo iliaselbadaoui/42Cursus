@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:01:49 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 15:08:21 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/10 15:24:08 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_generic		fill_cylinder(t_string *props)
 {
 	t_generic res;
-	
+
 	if (object_props_count(props) != 5)
 		errcode(1);
 	res.cy = (t_cylinder *)malloc(sizeof(t_cylinder));
