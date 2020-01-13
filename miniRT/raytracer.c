@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/11 16:05:01 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:12:15 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 	t_ambient	amb;
 	t_plane		plane;
 
-	plane.point = vec_init(0, 0, 2);
+	plane.point = vec_init(0, -5, 2);
 	plane.normal = vec_init(0, -1, 0);
-	plane.color = rgb(41, 128, 185);
-	sp.center = vec_init(0, 2, 12.5);
-	sp.diameter = 10;
-	sp.color = rgb(241, 196, 15);
+	plane.color = rgb(139,69,19);
+	sp.center = vec_init(0, 2, 10);
+	sp.diameter = 2;
+	sp.color = rgb(231, 76, 60);
 	t_light light;
 	light.color.r = 255;light.color.g = 255;light.color.b = 255;
 	amb.color.r = 255;amb.color.g = 255;amb.color.b = 255;
 	amb.range = .4;
-	light.pos = vec_init(50, -50, 50);
-	light.range = .9;
+	light.pos = vec_init(20, -20, 20);
+	light.range = .6;
 	x = 0;
 	while (x < resolution.width)
 	{
@@ -57,11 +57,14 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 			if (r < t)
 			{
 				t_vec pi = vec_add(ray.org,vec_times_double(ray.dir, r));
-				t_vec hp = vec_diff(light.pos, plane.point);
+				t_vec hp = vec_diff(light.pos, pi);
 				double dot = vec_dot(plane.normal, normalize_vect(hp));
 				// printf("hitpoint : %lf\n", dot);
-				t_rgb col = add_rgb(rgb_times_double(plane.color, light.range*dot), rgb_times_double(plane.color, amb.range));	
-				put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
+				if (!spher_intersect(sp, ray_init(light.pos, hp), &t))
+				{
+					t_rgb col = add_rgb(rgb_times_double(plane.color, light.range*dot), rgb_times_double(plane.color, amb.range));
+					put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
+				}
 			}
 			else if (t < r)
 			{
@@ -73,7 +76,7 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 				t_rgb col = add_rgb(rgb_times_double(sp.color, light.range*dot), rgb_times_double(sp.color, amb.range));
 				// printf("rgb(%d, %d, %d)\n", col.r, col.g, col.b);
 				put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
-			};
+			}
 			y++;
 		}
 		x++;
