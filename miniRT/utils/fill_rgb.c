@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 11:35:59 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 16:31:16 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:46:28 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ t_rgb			fill_rgb(t_string rgb)
 	}
 	else if (is_number(parts[0]) == 1 && is_number(parts[1]) == 1 &&
 			is_number(parts[2]) == 1)
-	{
-		free_2d(&parts);
 		fill_rgb_help(&res, parts);
-	}
 	else
 	{
 		free_2d(&parts);

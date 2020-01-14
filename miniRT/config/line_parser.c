@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 18:08:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 09:58:45 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:40:18 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		line_parser(t_string line, t_object **obj)
 	t_string		*tmp;
 
 	components = ft_split(line, ' ');
+	
 	if (object_props_count(components) == 0)
 	{
 		free_2d(&components);

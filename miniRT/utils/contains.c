@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   contains.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 17:44:44 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/14 14:47:32 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/13 21:57:54 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/13 22:09:10 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#include "utils.h"
 
-t_object		*reader(t_string scene)
+int			contains(t_string container, t_string content)
 {
-	int				fd;
-	int				res;
-	t_string		line;
-	static t_object	*head;
-
-	fd = open(scene, O_RDONLY);
-	while ((res = get_next_line(fd, &line)) > 0)
+	int iter;
+	while (*container)
 	{
-		line_parser(line, &head);
-		ft_free((void **)&line);
+		if (*container == *content)
+		{
+			iter = 1;
+			container++;
+			while (content[iter])
+			{
+				if (content[iter] != *container)
+				{
+					container -= iter;
+					iter = 0;
+					break ;
+				}
+				iter++;
+				container++;
+			}
+			if (iter)
+				return (1);
+		}
+		container++;
 	}
-	line_parser(line, &head);
-	ft_free((void **)&line);
-	if (res == -1)
-		errcode(3);
-	return (head);
+	return (0);
 }

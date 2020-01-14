@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 16:47:34 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/13 21:32:34 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,7 @@ struct			s_flag
 	int		resolution;
 	int		ambient;
 }				g_flag;
+t_resolution	g_resolution;
+t_camera		*g_camera;
+t_ambient		g_ambient;
 #endif

@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 12:42:09 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/10 16:37:05 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/14 17:32:27 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_string	g_errs[] = {"Error\nundefined type.",
 	"Error\nduplicated UNIQUE object",
 	"Error\nthe field of view should be positive intger in the range [0, 180]",
 	"Error\nall distances should be of positive values, you piece of shit",
-	"Error\nthe normal vector coordinates should be in the range [-1, 1]"};
+	"Error\nthe normal vector coordinates should be in the range [-1, 1]",
+	"Error\nnumber of args is less or more than expected",
+	"Error\nfile is not rt scene file or mistake in arg name",
+	"Error\nscene file should contain at least the resolution"};
 
 void		errcode(int code)
 {

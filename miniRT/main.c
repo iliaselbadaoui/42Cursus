@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 18:24:47 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/13 14:56:11 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/14 21:37:53 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,20 @@ int main(int argc, char **argv)
 	mlx_loop(mlx.mlx);
 	return (0);
 }
+
+// int		main(int argc, t_string *argv)
+// {
+// 	t_object	*lst;
+
+// 	if (argc < 2 || argc > 3)
+// 		errcode(10);
+// 	else if (!check_args(argc, argv))
+// 		errcode(11);
+// 	else
+// 	{
+// 		lst = reader(argv[1]);
+// 		if (!g_flag.resolution)
+// 			errcode(12);
+// 	}
+// 	return (SUCCESS);
+// }

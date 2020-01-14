@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/13 15:12:15 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/14 23:17:59 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 	plane.point = vec_init(0, -5, 2);
 	plane.normal = vec_init(0, -1, 0);
 	plane.color = rgb(139,69,19);
-	sp.center = vec_init(0, 2, 10);
+	sp.center = vec_init(0, 2, 6);
 	sp.diameter = 2;
 	sp.color = rgb(231, 76, 60);
 	t_light light;
@@ -63,6 +63,11 @@ void	raytracer(t_camera cam, t_resolution resolution, t_mlx mlx)
 				if (!spher_intersect(sp, ray_init(light.pos, hp), &t))
 				{
 					t_rgb col = add_rgb(rgb_times_double(plane.color, light.range*dot), rgb_times_double(plane.color, amb.range));
+					put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
+				}
+				else
+				{
+					t_rgb col = rgb_times_double(plane.color, amb.range);
 					put_pixel(mlx.img, x, y, rgb_to_int(col), resolution.width);
 				}
 			}
