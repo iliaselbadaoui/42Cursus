@@ -6,31 +6,41 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 11:25:16 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/26 18:37:10 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:25:25 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 
-t_result	check_intersections(t_object lst, t_ray ray, double *t)
+static void		init_res(t_result *res)
 {
-	double		closest;
+	res->color = rgb(0, 0, 0);
+	res->flag = 0;
+	res->sol = 0;
+}
+
+t_result		check_intersections(t_object *lst, t_ray ray)
+{
+	double		min;
 	double		solution;
 	t_result	res;
 	t_result	final;
 
-	closest = 20000;
-	while (lst.next)
+	min = INFINITY;
+	init_res(&res);
+	init_res(&final);
+	while (lst)
 	{
-		res = check_object(lst,ray, &solution);
-		if (solution < closest)
+		solution = INFINITY;
+		check_object(*lst,ray, &solution, &res);
+		// printf("color : %d\n", rgb_to_int(res.color));
+		if (solution < min)
 		{
-			closest = solution;
+			// printf("color : %d\n",res.color.r);
+			min = solution;
 			final = res;
-			printf("white");
 		}
-		lst = *(lst.next);
+		lst = lst->next;
 	}
-	*t = closest;
 	return  (final);
 }

@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/13 21:32:34 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:51:07 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ typedef struct	s_light
 	float	range;
 	t_rgb	color;
 }				t_light;
+typedef struct	s_lights
+{
+	t_light		*content;
+	t_light		*next;
+}				t_lights;
+
 typedef struct	s_ambient
 {
 	t_rgb	color;
@@ -107,6 +113,7 @@ typedef struct	s_triangle
 typedef struct	s_result
 {
 	int		flag;
+	double	sol;
 	t_rgb	color;
 }				t_result;
 typedef struct	s_generic
@@ -132,7 +139,11 @@ struct			s_flag
 	int		resolution;
 	int		ambient;
 }				g_flag;
-t_resolution	g_resolution;
-t_camera		*g_camera;
-t_ambient		g_ambient;
+struct			s_data
+{
+	t_mlx			mlx;
+	t_resolution	res;
+	t_ambient		amb;
+	t_camera		*cam;
+}				g_data;
 #endif
