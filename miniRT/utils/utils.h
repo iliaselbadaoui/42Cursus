@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:34:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 20:51:38 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:54:40 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_resolution	*create_resolution(int width, int height);
 t_object		*create_resolution_object(t_string	*components);
 double			double_abs(double d);
 double			deg_to_rad(int deg);
-t_lights		get_light_list(t_object *head);
+t_lights		*get_light_list(t_object *head);
 int				match_type(t_string type);
 void			ft_free(void **p);
 t_generic		fill_resolution(t_string	*props);
