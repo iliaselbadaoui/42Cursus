@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 18:24:47 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 17:48:45 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:57:12 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		main(int argc, t_string *argv)
 			errcode(12);
 		}
 		init_data(lst);
+		g_data.lst = get_light_list(lst);
 		raytracer(lst);
 		mlx_put_image_to_window(g_data.mlx.mlx, g_data.mlx.win, g_data.mlx.img, 0, 0);
 		manage_window(g_data.mlx);

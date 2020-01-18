@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 19:30:05 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:56:46 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@
 // 			{
 // 				t_vec pi = vec_add(ray.org,vec_times_double(ray.dir, t));
 // 				t_vec hp = vec_diff(light.pos, sp.center);
-//				t_vec normal = get_sphers_normal(sp, pi);
+				// t_vec normal = get_sphers_normal(sp, pi);
 // 				double dot = vec_dot(normalize_vect(normal),normalize_vect(hp));
 // 				// printf("hitpoint : %lf\n", dot);
 // 				t_rgb col = add_rgb(rgb_times_double(sp.color, light.range*dot), rgb_times_double(sp.color, amb.range));
@@ -121,11 +121,12 @@ void			raytracer(t_object *head)
 		y = 0;
 		while (y < g_data.res.height)
 		{
-			// printf("X : %d, Y : %d\n", x, y);
 			ray = ray_init(g_data.cam->pos, implement_fov(x, y));
 			res = check_intersections(head, ray);
-			// printf("color : %d\n",res.color.r);
-			put_pixel(x, y, rgb_to_int(res.color));
+			if (res.flag)
+				phong(g_data.lst, res, ray, init_imgpoint(x, y));//Leaks Here
+			// put_pixel(x, y, rgb_to_int(res.color));
+			//ft_putstr_fd("HERE\n", 1);
 			y++;
 		}
 		x++;

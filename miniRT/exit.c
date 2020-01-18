@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 20:43:36 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:28:57 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,24 @@ int		escape(int key, t_mlx *mlx)
 		exit(SUCCESS);
 		return (1);
 	}
-	// printf("KEY : %d\n",key);
+	// else if (key == 124)
+	// {
+	// 	(g_data.cam->pos.x)++;
+	// 	mlx_clear_window(mlx->mlx, mlx->win);
+	// 	mlx_destroy_image(g_data.mlx.mlx, g_data.mlx.img);
+	// 	raytracer(g_object);
+	// 	mlx_put_image_to_window(g_data.mlx.mlx, g_data.mlx.win, g_data.mlx.img, 0, 0);
+	// 	return (1);
+	// }
+	// else if (key == 123)
+	// {
+	// 	(g_data.cam->pos.x)--;
+	// 	mlx_destroy_image(g_data.mlx.mlx, g_data.mlx.img);
+	// 	raytracer(g_object);
+	// 	g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width, g_data.res.height);
+	// 	mlx_put_image_to_window(g_data.mlx.mlx, g_data.mlx.win, g_data.mlx.img, 0, 0);
+	// 	return (1);
+	// }
 	return (0);
 }
 

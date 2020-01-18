@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 20:51:07 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 20:56:19 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ typedef struct	s_resolution
 	int		height;
 	int		width;
 }				t_resolution;
+typedef struct	s_img_point
+{
+	int x;
+	int y;
+}				t_img_point;
 typedef struct	s_mlx
 {
 	void	*mlx;
@@ -79,8 +84,8 @@ typedef struct	s_light
 }				t_light;
 typedef struct	s_lights
 {
-	t_light		*content;
-	t_light		*next;
+	t_light			*content;
+	struct s_lights	*next;
 }				t_lights;
 
 typedef struct	s_ambient
@@ -114,6 +119,9 @@ typedef struct	s_result
 {
 	int		flag;
 	double	sol;
+	t_vec	pi;
+	t_vec	point;
+	t_vec	normal;
 	t_rgb	color;
 }				t_result;
 typedef struct	s_generic
@@ -145,5 +153,7 @@ struct			s_data
 	t_resolution	res;
 	t_ambient		amb;
 	t_camera		*cam;
+	t_lights		*lst;
 }				g_data;
+t_object		*g_object;
 #endif

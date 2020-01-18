@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 11:25:16 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 20:25:25 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 14:07:04 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ static void		init_res(t_result *res)
 	res->color = rgb(0, 0, 0);
 	res->flag = 0;
 	res->sol = 0;
+	res->normal = vec_init(0, 0, 0);
+	res->point = vec_init(0, 0, 0);
+	res->pi = vec_init(0, 0, 0);
 }
 
 t_result		check_intersections(t_object *lst, t_ray ray)
@@ -33,10 +36,8 @@ t_result		check_intersections(t_object *lst, t_ray ray)
 	{
 		solution = INFINITY;
 		check_object(*lst,ray, &solution, &res);
-		// printf("color : %d\n", rgb_to_int(res.color));
 		if (solution < min)
 		{
-			// printf("color : %d\n",res.color.r);
 			min = solution;
 			final = res;
 		}

@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:34:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 20:54:40 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/18 15:21:29 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ double			deg_to_rad(int deg);
 t_lights		*get_light_list(t_object *head);
 int				match_type(t_string type);
 void			ft_free(void **p);
+t_resolution	init_resolution(int width, int height);
+t_img_point		init_imgpoint(int x, int y);
 t_generic		fill_resolution(t_string	*props);
 t_generic		fill_ambient(t_string *props);
 t_generic		fill_camera(t_string *props);
