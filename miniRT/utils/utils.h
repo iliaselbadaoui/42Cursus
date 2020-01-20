@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:34:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 15:21:29 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/19 10:07:36 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void			clear_object_list(t_object **head);
 t_resolution	*create_resolution(int width, int height);
 t_object		*create_resolution_object(t_string	*components);
 double			double_abs(double d);
+int				vec_in_range(double min, t_vec vec, double max);
 double			deg_to_rad(int deg);
 t_lights		*get_light_list(t_object *head);
 int				match_type(t_string type);

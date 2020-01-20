@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   vec_in_range.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/30 15:58:46 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/20 15:46:43 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/19 10:02:21 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/19 10:09:36 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "utils.h"
 
-void		manage_window(t_mlx mlx)
+int			vec_in_range(double min, t_vec vec, double max)
 {
-	mlx_hook(mlx.win, 2, 0, escape, &mlx);
-	mlx_hook(mlx.win, 17, 0, close_win, &mlx);
+	if (!is_in_range(min, vec.x, max) || !is_in_range(min, vec.y, max) ||
+		!is_in_range(min, vec.z, max))
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 16:03:14 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/12/30 12:20:58 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 21:01:16 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ double		clamp_rgb(double min, double rgb_shadow, double max)
 double		min(double n1, double n2)
 {
 	if (n1 < n2)
+		return (n1);
+	else 
+		return (n2);
+}
+
+double		max(double n1, double n2)
+{
+	if (n1 > n2)
 		return (n1);
 	else 
 		return (n2);

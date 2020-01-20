@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:54:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 18:28:44 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:54:31 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	check_object(t_object lst, t_ray ray, double *solution, t_result *res)
 	double		t;
 
 	t = INFINITY;
+	res->dir = ray.dir;
 	if (equals(lst.type, "sp"))
 	{
 		res->flag = spher_intersect(*(lst.content.sp), ray, solution);
@@ -24,7 +25,8 @@ void	check_object(t_object lst, t_ray ray, double *solution, t_result *res)
 		res->sol = *solution;
 		if (res->flag)
 		{
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, res->sol));
+			res->type = "sp";
+			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
 			res->normal = normalize_vect(get_sphers_normal(*(lst.content.sp),
 			res->pi));
 		}
@@ -36,7 +38,8 @@ void	check_object(t_object lst, t_ray ray, double *solution, t_result *res)
 		res->sol = *solution;
 		if (res->flag)
 		{
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, res->sol));
+			res->type = "pl";
+			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
 			res->normal = (*(lst.content.plane)).normal;
 		}
 	}

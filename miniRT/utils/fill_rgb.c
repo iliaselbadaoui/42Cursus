@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 11:35:59 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/14 14:46:28 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 13:31:32 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void		fill_rgb_help(t_rgb *res, t_string *parts)
 
 t_rgb			fill_rgb(t_string rgb)
 {
-	t_string	*parts;
-	t_rgb		res;
+	t_string		*parts;
+	static t_rgb	res;
 
 	parts = ft_split(rgb, ',');
 	if (object_props_count(parts) != 3)

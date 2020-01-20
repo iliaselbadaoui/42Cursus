@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 20:56:46 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 20:20:31 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ static t_vec	implement_fov(int x, int y)
 	t_vec ray;
 
 	ray.x = (2 * (x + 0.5)/(double)g_data.res.width - 1)*
-			tan(deg_to_rad(g_data.cam->fov) / 2)*g_data.res.width/
+			tan(deg_to_rad(g_data.cam->fov / 2))*g_data.res.width/
 			(double)g_data.res.height;
 	ray.y = (1 - 2 * (y + 0.5)/(double)g_data.res.height)*
-	tan(deg_to_rad(g_data.cam->fov) / 2);
+	tan(deg_to_rad(g_data.cam->fov / 2));
 	ray.z = 1;
 	return (ray);
 }
@@ -121,10 +121,10 @@ void			raytracer(t_object *head)
 		y = 0;
 		while (y < g_data.res.height)
 		{
-			ray = ray_init(g_data.cam->pos, implement_fov(x, y));
+			ray = ray_init(g_data.cam->pos, normalize_vect(implement_fov(x, y)));
 			res = check_intersections(head, ray);
 			if (res.flag)
-				phong(g_data.lst, res, ray, init_imgpoint(x, y));//Leaks Here
+				phong(g_data.lst, res, init_imgpoint(x, y));
 			// put_pixel(x, y, rgb_to_int(res.color));
 			//ft_putstr_fd("HERE\n", 1);
 			y++;

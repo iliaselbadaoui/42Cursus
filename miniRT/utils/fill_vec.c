@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:24:36 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/09 12:11:01 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 13:32:02 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_vec	fill_vec(t_string vec)
 {
-	t_vec		res;
-	t_string	*parts;
+	static t_vec	res;
+	t_string		*parts;
 
 	parts = ft_split(vec, ',');
 	if (object_props_count(parts) != 3)

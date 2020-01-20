@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 20:56:19 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:37:41 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,14 @@ typedef struct	s_triangle
 }				t_triangle;
 typedef struct	s_result
 {
-	int		flag;
-	double	sol;
-	t_vec	pi;
-	t_vec	point;
-	t_vec	normal;
-	t_rgb	color;
+	int			flag;
+	double		sol;
+	t_string	type;
+	t_vec		pi;
+	t_vec		point;
+	t_vec		normal;
+	t_rgb		color;
+	t_vec		dir;
 }				t_result;
 typedef struct	s_generic
 {
