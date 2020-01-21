@@ -6,13 +6,13 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:38:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/14 14:42:26 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:51:25 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-static	void	fill_list_helper(t_object **head, t_string *components)
+static void		fill_list_helper(t_object **head, t_string *components)
 {
 	if (equals(*components, "pl"))
 		add_object_node(head, create_object_node("pl",
@@ -29,6 +29,9 @@ static	void	fill_list_helper(t_object **head, t_string *components)
 	else if (equals(*components, "tr"))
 		add_object_node(head, create_object_node("tr",
 		fill_triangle(components + 1)));
+	else if (equals(*components, "l"))
+		add_object_node(head, create_object_node("l",
+		fill_light(components + 1)));
 }
 
 void			fill_list(t_object **head, t_string *components)
@@ -50,11 +53,11 @@ void			fill_list(t_object **head, t_string *components)
 	else if (equals(*components, "A") && g_flag.ambient)
 		errcode(6);
 	else if (equals(*components, "c"))
+	{
 		add_object_node(head, create_object_node("c",
 		fill_camera(components + 1)));
-	else if (equals(*components, "l"))
-		add_object_node(head, create_object_node("l",
-		fill_light(components + 1)));
+		g_flag.camera = 1;
+	}
 	else
 		fill_list_helper(head, components);
 }

@@ -6,20 +6,29 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 14:07:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/20 21:07:25 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:41:44 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 #include "../minirt.h"
 
-static t_rgb	phong_diffuse(t_light light, t_rgb col, double dot)
+static t_rgb	phong_diffuse(t_light light, t_rgb col, double dot,int first)
 {
 	t_rgb	res;
 
-	res.r = clamp_rgb(0, (col.r + light.color.r) * light.range, 255);
-	res.g = clamp_rgb(0, (col.g + light.color.g) * light.range, 255);
-	res.b = clamp_rgb(0, (col.b + light.color.b) * light.range, 255);
+	if (first)
+	{
+		res.r = clamp_rgb(0, (col.r + light.color.r) * light.range, 255);
+		res.g = clamp_rgb(0, (col.g + light.color.g) * light.range, 255);
+		res.b = clamp_rgb(0, (col.b + light.color.b) * light.range, 255);
+	}
+	else
+	{
+		res.r = clamp_rgb(0, light.color.r * light.range, 255);
+		res.g = clamp_rgb(0, light.color.g * light.range, 255);
+		res.b = clamp_rgb(0, light.color.b * light.range, 255);
+	}
 	dot = max(0, dot);
 	res.r *= dot;
 	res.g *= dot;
@@ -44,13 +53,19 @@ void			phong(t_lights *lst, t_result res, t_img_point point)
 	double	dot;
 	t_rgb	col;
 
+	col = rgb(0,0,0);
 	while (lst)
 	{
 		hp = vec_add(lst->content->pos, res.pi);
 		dot = vec_dot(res.normal, normalize_vect(hp));
 		shadow = ray_init(lst->content->pos, hp);
 		if(!(check_intersections(g_object, shadow).flag))
-			col = phong_diffuse(*lst->content, res.color, dot);
+		{
+			if (!rgb_to_int(col) && lst->content->range > 0)
+				col = phong_diffuse(*(lst->content), res.color, dot, 1);
+			else
+				col = add_rgb(col, phong_diffuse(*(lst->content), res.color, dot, 0));
+		}
 		lst = lst->next;
 	}
 	col = add_rgb(col, phong_ambient(g_data.amb, res.color));

@@ -6,23 +6,24 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 10:18:15 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/16 13:25:30 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:42:48 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	get_first_cam(t_object *head)
+void		get_first_cam(t_object *head)
 {
 	t_object		*nav;
 
 	nav = head;
 	while (!equals(nav->type, "c") && nav)
 		nav = nav->next;
-	g_data.cam = nav->content.cam;
+	if (nav)
+		g_data.cam = nav->content.cam;
 }
 
-void	get_last_cam(t_object *head)
+void		get_last_cam(t_object *head)
 {
 	t_object		*nav;
 
@@ -35,29 +36,45 @@ void	get_last_cam(t_object *head)
 	}
 }
 
-void	get_next_cam(t_object *head)
+void		get_next_cam(t_object *head)
 {
 	t_object		*nav;
 
 	nav = head;
+	if (!nav)
+		return ;
 	while (nav->content.cam != g_data.cam && nav)
 		nav = nav->next;
 	if (nav)
 	{
-		while (!equals(nav->type, "c") && nav)
+		nav = nav->next;
+		while (!equals(nav->type, "c") && nav->content.cam != g_data.cam)
+		{
 			nav = nav->next;
-		g_data.cam = nav->content.cam;
+			if (!nav)
+				break ;
+		}
+		if (nav)
+			g_data.cam = nav->content.cam;
+		else
+			get_first_cam(g_object);
 	}
-	else
-		get_first_cam(head);
 }
 
-void	get_prev_cam(t_object *head)
+void		get_prev_cam(t_object *head)
 {
 	t_object		*nav;
-
+	
 	nav = head;
-	while (nav->next->content.cam != g_data.cam && nav)
+	while (nav->content.cam != g_data.cam && nav)
+	{
+		if (equals(nav->type, "c"))
+		{
+			g_data.cam = nav->content.cam;
+			break ;
+		}
 		nav = nav->next;
-	g_data.cam = nav->next->content.cam;
+	}
+	if (!nav)
+		get_last_cam(g_object);
 }
