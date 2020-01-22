@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/21 20:15:18 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/22 21:21:38 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	put_pixel(int x, int y, int color)
 
 static t_vec	implement_fov(int x, int y)
 {
-	t_vec ray;
+	t_vec 	ray;
+	double	teta;
+	double	phi;
 
 	ray.x = (2 * (x + 0.5)/(double)g_data.res.width - 1)*
 			tan(deg_to_rad(g_data.cam->fov / 2))*g_data.res.width/
@@ -32,6 +34,7 @@ static t_vec	implement_fov(int x, int y)
 	ray.y = (1 - 2 * (y + 0.5)/(double)g_data.res.height)*
 	tan(deg_to_rad(g_data.cam->fov / 2));
 	ray.z = 1;
+	
 	return (ray);
 }
 

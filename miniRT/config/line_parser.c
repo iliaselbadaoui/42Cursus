@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 18:08:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/14 14:40:18 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:07:20 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ static void	fill_arr(t_string *arr)
 	arr[6] = "pl";
 	arr[7] = "tr";
 	arr[8] = "cy";
-	arr[9] = NULL;
+	arr[9] = "#";
+	arr[10] = NULL;
 }
 
 int			match_type(t_string type)
 {
-	t_string	arr[10];
+	t_string	arr[11];
 	int			i;
 
 	fill_arr(arr);

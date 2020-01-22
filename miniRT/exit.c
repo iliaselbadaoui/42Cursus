@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/21 21:02:18 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/22 20:39:57 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,24 @@ int			escape(int key)
 	else if (key == 123)
 	{
 		g_data.cam->pos.x-= .1;
+		mlx_clear_window(g_data.mlx.mlx, g_data.mlx.win);
+		g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width, g_data.res.height);
+		raytracer(g_object);
+		mlx_put_image_to_window(g_data.mlx.mlx, g_data.mlx.win, g_data.mlx.img, 0, 0);
+		return (1);
+	}
+	else if (key == 125)
+	{
+		g_data.cam->pos.y-= .1;
+		mlx_clear_window(g_data.mlx.mlx, g_data.mlx.win);
+		g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width, g_data.res.height);
+		raytracer(g_object);
+		mlx_put_image_to_window(g_data.mlx.mlx, g_data.mlx.win, g_data.mlx.img, 0, 0);
+		return (1);
+	}
+	else if (key == 126)
+	{
+		g_data.cam->pos.y+= .1;
 		mlx_clear_window(g_data.mlx.mlx, g_data.mlx.win);
 		g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width, g_data.res.height);
 		raytracer(g_object);
