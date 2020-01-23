@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 04:41:23 by ielbadao          #+#    #+#             */
-/*   Updated: 2019/11/22 12:05:06 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:45:58 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_atoi(const char *str)
 {
 	long	res;
 	int		sign;
-
+	
 	res = 0;
 	sign = 1;
 	while (*str == 32 || (*str <= 13 && *str >= 9))

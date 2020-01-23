@@ -2,7 +2,7 @@ CC = gcc -Werror -Wextra -Wall
 
 NAME = ./MiniRT
 
-libs = -I minirt.h -I types.h -I utils/utils.h -I config/config.h -I geometry/geometry.h  -I libft/libft.h -lmlx -framework openGL -framework AppKit
+libs = -lmlx -framework openGL -framework AppKit
 
 makeft = make -f libft/Makefile
 
@@ -18,7 +18,7 @@ utils/fill_plane.c utils/fill_resolution.c utils/fill_rgb.c utils/fill_sphere.c\
 utils/fill_square.c utils/fill_triangle.c utils/fill_vec.c utils/free.c utils/rotations.c\
 utils/free_2d.c utils/get_before_last.c utils/get_light_list.c utils/init_resolution.c\
 utils/is_in_range.c utils/is_number.c utils/object_props_count.c utils/vec_in_range.c\
-check_args.c exit.c init_data.c main.c raytracer.c window.c
+check_args.c exit.c init_data.c main.c raytracer.c window.c rotate_camera.c
 
 all:$(NAME)
 
@@ -26,6 +26,13 @@ $(NAME):
 	@$(makeft)
 	@$(CC) $(srcs) $(libs) libft.a -o $(NAME)
 	@rm -rf libft.a *.o
+
 clean:
+	@rm -rf libft.a *.o
 	@rm -rf $(NAME)
+
 fclean:clean
+
+re: fclean all
+
+.PHONY: all clean fclean re

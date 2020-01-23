@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 14:07:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/22 21:04:52 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/23 12:44:26 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			phong(t_lights *lst, t_result res, t_img_point point)
 	{
 		hp = vec_add(lst->content->pos, res.pi);
 		dot = vec_dot(res.normal, normalize_vect(hp));
-		shadow = ray_init(hp, lst->content->pos);
+		shadow = ray_init(vec_times_double(hp, -1), vec_times_double(lst->content->pos, -1));
 		if(!(check_intersections(g_object, shadow).flag))
 		{
 			if (!rgb_to_int(col) && lst->content->range > 0)

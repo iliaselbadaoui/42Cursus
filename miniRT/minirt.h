@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 18:22:01 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/21 18:46:21 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:32:29 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int				close_win(int key);
 void			manage_window(t_mlx mlx);
 void			put_pixel(int x, int y, int color);
 void			init_data(t_object	*head);
+int				rotate_camera(int key);
 #endif
