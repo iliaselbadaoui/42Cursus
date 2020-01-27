@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 11:25:16 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 14:07:04 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/24 15:23:31 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		init_res(t_result *res)
 	res->pi = vec_init(0, 0, 0);
 }
 
-t_result		check_intersections(t_object *lst, t_ray ray)
+t_result		check_intersections(t_object *lst, t_ray ray, void *current)
 {
 	double		min;
 	double		solution;
@@ -35,7 +35,9 @@ t_result		check_intersections(t_object *lst, t_ray ray)
 	while (lst)
 	{
 		solution = INFINITY;
-		check_object(*lst,ray, &solution, &res);
+		res.current = lst;
+		if (current != lst)
+			check_object(*lst,ray, &solution, &res);
 		if (solution < min)
 		{
 			min = solution;

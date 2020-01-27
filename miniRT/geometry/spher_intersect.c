@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:44:46 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/22 18:31:03 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/24 23:51:32 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,17 @@ int		spher_intersect(t_spher sp, t_ray ray, double *t)
 	{
 		e.s0 = (-e.b - sqrt(e.delta)) / 2 * e.a;
 		e.s1 = (-e.b + sqrt(e.delta)) / 2 * e.a;
-		*t = (e.s0 < e.s1) ? e.s0 : e.s1;
-		return (1);
+		if (e.s1 > 0)
+		{
+			*t = e.s0;
+			return (1);
+		}
+		else if (e.s0 > 0)
+		{
+			*t = e.s1;
+			return (1);
+		}
+		else
+			return (0);
 	}
 }

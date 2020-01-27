@@ -6,14 +6,14 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/23 18:36:59 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:25:33 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
 
-void	put_pixel(int x, int y, int color)
+void				put_pixel(int x, int y, int color)
 {
 	int k;
 	int *data;
@@ -24,26 +24,29 @@ void	put_pixel(int x, int y, int color)
 
 static t_vec	implement_fov(int x, int y)
 {
-	t_vec 	ray;
-	double teta;
-	double phi;
-	double ro;
+	t_vec 			ray;
+	t_uvw			coord;
+	t_vec			dir;
+	t_resolution	res;
 
-	ro = vec_distance(g_data.cam->pos, g_data.cam->normal);
-	ray.x = (2 * (x + 0.5)/(double)g_data.res.width - 1)*
-			tan(deg_to_rad(g_data.cam->fov / 2))*g_data.res.width/
-			(double)g_data.res.height;
-	ray.y = (1 - 2 * (y + 0.5)/(double)g_data.res.height)*
+	dir = g_data.cam->normal;
+	res = g_data.res;
+	ray.x = (2 * (x + 0.5)/(double)res.width - 1)*
+			tan(deg_to_rad(g_data.cam->fov / 2))*res.width/
+			(double)res.height;
+	ray.y = (1 - 2 * (y + 0.5)/(double)res.height)*
 	tan(deg_to_rad(g_data.cam->fov / 2));
-	ray.z = g_data.cam->normal.z;
-	teta = acos(g_data.cam->normal.z/ro);
-	phi = atan2(g_data.cam->normal.y, g_data.cam->normal.x);
-	ray = y_rotation(ray, teta);
-	ray = x_rotation(ray, phi);
+	ray.z = 1;
+	coord.w = dir;
+	coord.u = vec_cross(vec_init(0, 1, 0), coord.w);
+	coord.v = vec_cross(coord.u, coord.w);
+	coord.ph = tan(deg_to_rad(g_data.cam->fov) / 2) / res.height;
+	coord.pw = tan(deg_to_rad(g_data.cam->fov) / 2) / res.width;
+	ray = vec_add(ray, coord.w);
 	return (ray);
 }
 
-void			raytracer(t_object *head)
+void				raytracer(t_object *head)
 {
 	int			x;
 	int			y;
@@ -58,8 +61,9 @@ void			raytracer(t_object *head)
 			y = 0;
 			while (y < g_data.res.height)
 			{
-				ray = ray_init(g_data.cam->pos, normalize_vect(implement_fov(x, y)));
-				res = check_intersections(head, ray);
+				ray = ray_init(g_data.cam->pos, normalize_vect(
+				implement_fov(x, y)));
+				res = check_intersections(head, ray, NULL);
 				if (res.flag)
 					phong(g_data.lst, res, init_imgpoint(x, y));
 				y++;

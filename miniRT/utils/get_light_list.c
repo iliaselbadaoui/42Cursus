@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 20:44:31 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/18 16:45:36 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:34:20 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ t_lights		*get_light_list(t_object *head)
 		}
 		head = head->next;
 	}
-	return (lst);
+	return (light_head);
 }

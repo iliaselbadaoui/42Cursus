@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/23 18:23:30 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/27 20:26:04 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int			escape(int key)
 		return (1);
 	}
 	escape_help(key);
-	// rotate_camera(key);
 	return (0);
 }
 

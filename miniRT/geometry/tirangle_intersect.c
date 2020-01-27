@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_resolution.c                                  :+:      :+:    :+:   */
+/*   tirangle_intersect.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 15:15:42 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/26 21:22:42 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/27 20:28:29 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/27 20:31:15 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "geometry.h"
 
-t_resolution	init_resolution(int width, int height)
+int         tirangle_intersect(t_triangle tr, t_ray ray, double *t)
 {
-	t_resolution	res;
-
-	res.width  = width;
-	res.height = height;
-	return (res);
-}
-
-t_img_point		init_imgpoint(int x, int y)
-{
-	t_img_point	res;
-
-	res.x  = x;
-	res.y = y;
-	return (res);
+    
 }
