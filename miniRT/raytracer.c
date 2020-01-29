@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/27 18:25:33 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:53:58 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static t_vec	implement_fov(int x, int y)
 	coord.ph = tan(deg_to_rad(g_data.cam->fov) / 2) / res.height;
 	coord.pw = tan(deg_to_rad(g_data.cam->fov) / 2) / res.width;
 	ray = vec_add(ray, coord.w);
+	ray = vec_add(ray, vec_times_double(coord.u, coord.pw));
+	ray = vec_add(ray, vec_times_double(coord.v, coord.ph));
 	return (ray);
 }
 

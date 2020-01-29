@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_triangle.c                                    :+:      :+:    :+:   */
+/*   square_intersect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/09 17:13:13 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/28 16:10:16 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/01/28 21:43:22 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/01/28 21:45:42 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "geometry.h"
 
-t_generic		fill_triangle(t_string *props)
+int				square_intersect(t_square sq, t_ray ray, double *t)
 {
-	t_generic res;
-
-	if (object_props_count(props) != 4)
-		errcode(1);
-	res.tr = (t_triangle *)malloc(sizeof(t_triangle));
-	(res.tr)->p1 = fill_vec(props[0]);
-	(res.tr)->p2 = fill_vec(props[1]);
-	(res.tr)->p3 = fill_vec(props[2]);
-	(res.tr)->color = fill_rgb(props[3]);
-	return (res);
+	
 }

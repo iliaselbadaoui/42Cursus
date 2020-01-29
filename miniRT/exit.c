@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 15:27:45 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/27 20:26:04 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:02:58 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int			escape(int key)
 int			close_win(int key)
 {
 	key = 1;
+
 	exit(SUCCESS);
 	return (1);
 }
