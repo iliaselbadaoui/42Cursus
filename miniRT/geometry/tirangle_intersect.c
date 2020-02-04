@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:28:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/28 21:45:21 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/04 09:51:58 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double *t)
 	(tr.p3.x - tr.p1.x) * (tr.p2.y - tr.p1.y);
 	b = ts.point.y - tr.p1.y - (a * (tr.p3.y - tr.p1.y));
 	b /= tr.p2.y - tr.p1.y;
-	if (a >= 0 && b >= 0 && a + b <= 1)
+	if (a >= 0 && b >= 0 && (a + b) <= 1)
 		return (1);
 	return (0);
 }
