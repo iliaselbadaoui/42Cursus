@@ -8,8 +8,9 @@ makeft = make -f libft/Makefile
 
 srcs = config/fill_list.c config/get_next_line.c config/line_parser.c config/reader.c\
 geometry/check_intersections.c geometry/check_object.c geometry/clamp_rgb.c\
-geometry/get_sphers_normal.c geometry/phong.c geometry/plane_intersect.c geometry/get_angle.c\
-geometry/ray_init.c geometry/tirangle_intersect.c geometry/rgb.c geometry/spher_intersect.c geometry/vec_diff.c\
+geometry/get_sphers_normal.c geometry/phong.c geometry/plane_intersect.c geometry/square_intersect.c\
+geometry/get_angle.c geometry/ray_init.c geometry/tirangle_intersect.c geometry/rgb.c\
+geometry/spher_intersect.c geometry/vec_diff.c\
 geometry/vec_distance.c geometry/vec_times.c utils/add_object_node.c utils/atod.c\
 utils/camera_utils.c utils/clear_object_list.c utils/contains.c utils/create_object_node.c\
 utils/create_resolution.c utils/deg_to_rad.c utils/double_abs.c utils/equals.c utils/error.c\

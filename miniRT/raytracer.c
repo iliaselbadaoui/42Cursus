@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/29 10:20:04 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/04 17:10:00 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,23 @@ void				put_pixel(int x, int y, int color)
 static t_vec	implement_fov(int x, int y)
 {
 	t_vec 			ray;
-	t_uvw			coord;
 	t_vec			dir;
 	t_resolution	res;
+	t_rotation		rot;
 
 	dir = g_data.cam->normal;
 	res = g_data.res;
+	rot.ro = vec_distance(g_data.cam->pos, dir);
+	rot.phi = atan(dir.x / dir.z);
+	rot.teta = acos(dir.y / rot.ro);
 	ray.x = (2 * (x + 0.5)/(double)res.width - 1)*
 			tan(deg_to_rad(g_data.cam->fov / 2))*res.width/
 			(double)res.height;
 	ray.y = (1 - 2 * (y + 0.5)/(double)res.height)*
 	tan(deg_to_rad(g_data.cam->fov / 2));
-	ray.z = 1;
-	coord.w = dir;
-	coord.u = vec_cross(vec_init(0, 1, 0), coord.w);
-	coord.v = vec_cross(coord.u, coord.w);
-	coord.ph = tan(deg_to_rad(g_data.cam->fov) / 2) / res.height;
-	coord.pw = tan(deg_to_rad(g_data.cam->fov) / 2) / res.width;
-	ray = vec_add(ray, coord.w);
-	// ray = vec_add(ray, vec_times_double(coord.u, coord.pw));
-	// ray = vec_add(ray, vec_times_double(coord.v, coord.ph));
+	ray.z = dir.z;
+	ray = y_rotation(ray, rot.teta);
+	ray = x_rotation(ray, rot.phi);
 	return (ray);
 }
 

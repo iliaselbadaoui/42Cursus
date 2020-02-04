@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/28 14:03:32 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/04 19:03:56 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,11 @@ typedef struct	s_ambient
 }				t_ambient;
 typedef struct	s_square
 {
-	t_vec	point;
+	t_vec	p1;
+	t_vec	p2;
+	t_vec	p3;
+	t_vec	p4;
 	t_vec	normal;
-	double	side;
 	t_rgb	color;
 }				t_square;
 typedef struct	s_cylinder
@@ -117,20 +119,17 @@ typedef struct	s_triangle
 }				t_triangle;
 typedef struct	s_tirangle_solve
 {
-	t_vec	p1p2;
-    t_vec	p1p3;
+	t_vec	ab;
+	t_vec	bc;
+	t_vec	ca;
     t_vec	N;
-    double	area2;
     double	NdotRayDirection;
     double	d;
     t_vec	point;
-    t_vec	C;
-    t_vec	edge1;
-    t_vec	vp1;
-    t_vec	edge2;
-    t_vec	vp2;
-    t_vec	edge3;
-    t_vec	vp3;
+	t_vec	ap;
+	t_vec	bp;
+	t_vec	u;
+	t_vec	v;
 }				t_tirangle_solve;
 
 typedef struct	s_result
