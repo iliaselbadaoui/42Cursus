@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:32:48 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/04 16:41:18 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/05 15:49:35 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			check_object(t_object lst, t_ray ray, double *solution, t_result *res);
 double			vec_distance(t_vec v1, t_vec v2);
 int				plane_intersect(t_plane plane, t_ray ray, double *t);
 int				square_intersect(t_square sq, t_ray ray, double *t);
+int				cylinder_intersect(t_cylinder cy, t_ray ray, double *t);
 double			get_angle(t_vec unit, t_vec v);
 int				tirangle_intersect(t_triangle tr, t_ray ray, double *t);
 #endif
