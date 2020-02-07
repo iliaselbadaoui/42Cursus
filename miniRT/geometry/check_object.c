@@ -6,11 +6,28 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:54:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/05 11:35:28 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/07 20:30:29 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
+
+static	void	check4(t_object lst, t_ray ray, double *solution, t_result *res)
+{
+	if (equals(lst.type, "cy"))
+	{
+		res->flag = cylinder_intersect(*(lst.content.cy), ray, solution);
+		res->color = (*(lst.content.cy)).color;
+		res->sol = *solution;
+		if (res->flag)
+		{
+			res->type = "cy";
+			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->normal = normalize_vect(vec_diff(lst.content.cy->point,
+			res->pi));
+		}
+	}
+}
 
 static	void	check3(t_object lst, t_ray ray, double *solution, t_result *res)
 {
@@ -23,9 +40,12 @@ static	void	check3(t_object lst, t_ray ray, double *solution, t_result *res)
 		{
 			res->type = "sq";
 			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
-			res->normal = (*(lst.content.sq)).normal;
+			res->normal = vec_cross(vec_diff(lst.content.sq->p2,
+			lst.content.sq->p1), vec_diff(lst.content.sq->p3,
+			lst.content.sq->p1));
 		}
 	}
+	check4(lst, ray, solution, res);
 }
 
 static	void	check2(t_object lst, t_ray ray, double *solution, t_result *res)

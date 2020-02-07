@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:28:29 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/05 16:24:58 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/07 18:25:37 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static  t_tirangle_solve    init_ts(t_triangle tr, t_ray ray)
 {
-	 t_tirangle_solve    ts;
+	t_tirangle_solve    ts;
 
 	ts.ab = vec_diff(tr.p2, tr.p1);
 	ts.bc = vec_diff(tr.p3, tr.p2);
@@ -35,7 +35,7 @@ double *t)
 	ts = init_ts(tr, ray);
 	if (double_abs(ts.NdotRayDirection) <= 1e-6)
 		return (0);
-	*t = vec_dot(ts.N, ray.org) + ts.d; 
+	*t = vec_dot(ts.N, ray.org) + ts.d;
 	if (*t < 0)
 		return (0);
 	ts.point = vec_add(ray.org, vec_times_double(ray.dir, *t));

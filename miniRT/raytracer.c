@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/05 20:06:04 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/06 09:28:24 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,9 @@ static t_vec	implement_fov(int x, int y)
 	t_vec 			ray;
 	t_vec			dir;
 	t_resolution	res;
-	t_rotation		rot;
 
 	dir = g_data.cam->normal;
 	res = g_data.res;
-	rot.ro = vec_distance(g_data.cam->pos, dir);
-	rot.phi = atan(dir.x / dir.z);
-	rot.teta = acos(dir.y / rot.ro);
 	ray.x = (2 * (x + 0.5)/(double)res.width - 1)*
 			tan(deg_to_rad(g_data.cam->fov / 2))*res.width/
 			(double)res.height;

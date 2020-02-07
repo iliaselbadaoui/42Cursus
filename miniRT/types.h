@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/04 19:03:56 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:45:12 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ typedef struct	s_square
 	t_vec	p2;
 	t_vec	p3;
 	t_vec	p4;
-	t_vec	normal;
 	t_rgb	color;
 }				t_square;
 typedef struct	s_cylinder
