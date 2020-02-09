@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 12:14:08 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/07 20:25:38 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:05:25 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ int				cylinder_intersect(t_cylinder cy, t_ray ray, double *t)
 {
 	t_equation	e;
 	t_vec		pos;
-
+	
 	pos = vec_diff(ray.org, cy.point);
-	cy.height = 0;
 	e.a = (ray.dir.x * ray.dir.x) + (ray.dir.z * ray.dir.z);
 	e.b = (2 * ray.org.x * ray.dir.x) + (2 * pos.z * ray.dir.z);
 	e.c = (pos.x * pos.x) + (pos.z * pos.z) - cy.diameter;
@@ -30,16 +29,11 @@ int				cylinder_intersect(t_cylinder cy, t_ray ray, double *t)
 		e.s0 = (-e.b - sqrt(e.delta)) / 2 * e.a;
 		e.s1 = (-e.b + sqrt(e.delta)) / 2 * e.a;
 		if (e.s1 > 0)
-		{
 			*t = e.s0;
-			return (1);
-		}
 		else if (e.s0 > 0)
-		{
 			*t = e.s1;
-			return (1);
-		}
 		else
 			return (0);
+		return (1);
 	}
 }
