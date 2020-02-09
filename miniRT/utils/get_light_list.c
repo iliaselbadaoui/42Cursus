@@ -6,11 +6,19 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 20:44:31 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/24 14:34:20 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:59:02 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+static void		helper(t_lights *lst, t_object *head)
+{
+	lst->next = (t_lights *)malloc(sizeof(t_lights));
+	lst = lst->next;
+	lst->content = head->content.light;
+	lst->next = NULL;
+}
 
 t_lights		*get_light_list(t_object *head)
 {
@@ -30,12 +38,7 @@ t_lights		*get_light_list(t_object *head)
 				lst = light_head;
 			}
 			else
-			{
-				lst->next = (t_lights *)malloc(sizeof(t_lights));
-				lst = lst->next;
-				lst->content = head->content.light;
-				lst->next = NULL;
-			}
+				helper(lst, head);
 		}
 		head = head->next;
 	}

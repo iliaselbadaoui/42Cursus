@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 11:25:16 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/24 15:23:31 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:17:38 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_result		check_intersections(t_object *lst, t_ray ray, void *current)
 		solution = INFINITY;
 		res.current = lst;
 		if (current != lst)
-			check_object(*lst,ray, &solution, &res);
+			check_object(*lst, ray, &solution, &res);
 		if (solution < min)
 		{
 			min = solution;
@@ -45,5 +45,5 @@ t_result		check_intersections(t_object *lst, t_ray ray, void *current)
 		}
 		lst = lst->next;
 	}
-	return  (final);
+	return (final);
 }

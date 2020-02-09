@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:34:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/26 21:22:56 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:59:31 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_rgb			fill_rgb(t_string rgb);
 t_vec			fill_vec(t_string vec);
 void			get_first_cam(t_object *head);
 void			get_last_cam(t_object *head);
-void            get_next_cam(t_object *head);
-void    		get_prev_cam(t_object *head);
+void			get_next_cam(t_object *head);
+void			get_prev_cam(t_object *head);
 t_vec			x_rotation(t_vec vec, double alpha);
 t_vec			y_rotation(t_vec vec, double alpha);
 t_vec			z_rotation(t_vec vec, double alpha);

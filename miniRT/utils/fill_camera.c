@@ -6,14 +6,13 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:08:07 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/19 10:13:40 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:51:16 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-
-static void	free_camera_utility(t_camera *cam , int code)
+static void	free_camera_utility(t_camera *cam, int code)
 {
 	free(cam);
 	errcode(code);

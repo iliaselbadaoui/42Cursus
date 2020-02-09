@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:19:03 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/06 09:28:24 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 22:07:15 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ void				put_pixel(int x, int y, int color)
 	data[g_data.res.width * y + x] = color;
 }
 
-static t_vec	implement_fov(int x, int y)
+static t_vec		implement_fov(int x, int y)
 {
-	t_vec 			ray;
+	t_vec			ray;
 	t_vec			dir;
 	t_resolution	res;
 
 	dir = g_data.cam->normal;
 	res = g_data.res;
-	ray.x = (2 * (x + 0.5)/(double)res.width - 1)*
-			tan(deg_to_rad(g_data.cam->fov / 2))*res.width/
+	ray.x = (2 * (x + 0.5) / (double)res.width - 1) *
+			tan(deg_to_rad(g_data.cam->fov / 2)) * res.width /
 			(double)res.height;
-	ray.y = (1 - 2 * (y + 0.5)/(double)res.height)*
+	ray.y = (1 - 2 * (y + 0.5) / (double)res.height) *
 	tan(deg_to_rad(g_data.cam->fov / 2));
 	ray.z = dir.z;
 	ray = vec_add(ray, dir);

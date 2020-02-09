@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 20:58:37 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/17 18:02:44 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 22:04:53 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ static t_ambient	get_ambient(t_object *head)
 	return (amb);
 }
 
-void				init_data(t_object	*head)
+void				init_data(t_object *head)
 {
 	g_data.mlx.mlx = mlx_init();
 	g_data.res = get_resolution(head);
 	g_data.amb = get_ambient(head);
 	get_first_cam(head);
-	g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width, g_data.res.height);
-	g_data.mlx.win = mlx_new_window(g_data.mlx.mlx, g_data.res.width, g_data.res.height, "MiniRT");
+	g_data.mlx.img = mlx_new_image(g_data.mlx.mlx, g_data.res.width,
+	g_data.res.height);
+	g_data.mlx.win = mlx_new_window(g_data.mlx.mlx, g_data.res.width,
+	g_data.res.height, "MiniRT");
 }

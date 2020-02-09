@@ -6,13 +6,13 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:15:32 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/22 18:40:59 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:57:47 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_vec       x_rotation(t_vec vec, double alpha)
+t_vec		x_rotation(t_vec vec, double alpha)
 {
 	t_vec	res;
 
@@ -22,7 +22,7 @@ t_vec       x_rotation(t_vec vec, double alpha)
 	return (res);
 }
 
-t_vec       y_rotation(t_vec vec, double alpha)
+t_vec		y_rotation(t_vec vec, double alpha)
 {
 	t_vec	res;
 
@@ -32,7 +32,7 @@ t_vec       y_rotation(t_vec vec, double alpha)
 	return (res);
 }
 
-t_vec       z_rotation(t_vec vec, double alpha)
+t_vec		z_rotation(t_vec vec, double alpha)
 {
 	t_vec	res;
 

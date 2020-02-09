@@ -8,7 +8,8 @@
 		"config.h": "c",
 		"output": "c",
 		"utils.h": "c",
-		"cstdlib": "c"
+		"cstdlib": "c",
+		"__locale": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

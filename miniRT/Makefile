@@ -19,7 +19,7 @@ utils/fill_plane.c utils/fill_resolution.c utils/fill_rgb.c utils/fill_sphere.c\
 utils/fill_square.c utils/fill_triangle.c utils/fill_vec.c utils/free.c utils/rotations.c\
 utils/free_2d.c utils/get_before_last.c utils/get_light_list.c utils/init_resolution.c\
 utils/is_in_range.c utils/is_number.c utils/object_props_count.c utils/vec_in_range.c\
-check_args.c exit.c init_data.c main.c raytracer.c window.c rotate_camera.c
+check_args.c exit.c init_data.c main.c raytracer.c window.c rotate_camera.c save_to_bit_map.c
 
 all:$(NAME)
 

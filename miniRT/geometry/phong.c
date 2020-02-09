@@ -6,14 +6,14 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 14:07:33 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/05 17:30:00 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:37:48 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 #include "../minirt.h"
 
-static t_rgb	phong_diffuse(t_light light, t_rgb col, double dot,int first)
+static t_rgb	phong_diffuse(t_light light, t_rgb col, double dot, int first)
 {
 	t_rgb	res;
 
@@ -53,19 +53,19 @@ void			phong(t_lights *lst, t_result res, t_img_point point)
 	double	dot;
 	t_rgb	col;
 
-	col = rgb(0,0,0);
+	col = rgb(0, 0, 0);
 	while (lst)
 	{
 		hp = vec_add(lst->content->pos, res.pi);
 		dot = vec_dot(res.normal, normalize_vect(hp));
-		shadow = ray_init(hp , vec_times_double(lst->content->pos, -1));
-		// printf ("light color : %d\n", rgb_to_int(lst->content->color));
+		shadow = ray_init(hp, vec_times_double(lst->content->pos, -1));
 		if (!(check_intersections(g_object, shadow, res.current).flag))
 		{
 			if (!rgb_to_int(col) && lst->content->range > 0)
 				col = phong_diffuse(*(lst->content), res.color, dot, 1);
 			else
-				col = add_rgb(col, phong_diffuse(*(lst->content), res.color, dot, 0));
+				col = add_rgb(col, phong_diffuse(*(lst->content), res.color,
+				dot, 0));
 		}
 		lst = lst->next;
 	}

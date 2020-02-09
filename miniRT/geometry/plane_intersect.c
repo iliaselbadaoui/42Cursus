@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 10:44:41 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/05 14:48:48 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:30:35 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			plane_intersect(t_plane plane, t_ray ray, double *t)
 {
 	t_vec		in_plan;
 	double		dot;
-	
+
 	dot = vec_dot(ray.dir, plane.normal);
 	if (dot > 1e-6)
 	{

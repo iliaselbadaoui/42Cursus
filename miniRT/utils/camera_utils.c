@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 10:18:15 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/21 21:42:48 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:50:22 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		get_next_cam(t_object *head)
 void		get_prev_cam(t_object *head)
 {
 	t_object		*nav;
-	
+
 	nav = head;
 	while (nav->content.cam != g_data.cam && nav)
 	{

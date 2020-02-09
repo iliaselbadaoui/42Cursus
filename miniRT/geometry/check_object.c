@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 14:54:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/08 13:47:15 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/09 21:42:57 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	void	check4(t_object lst, t_ray ray, double *solution, t_result *res)
 		if (res->flag)
 		{
 			res->type = "cy";
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->pi = vec_add(ray.org, vec_times_double(ray.dir, *solution));
 			res->normal = normalize_vect(vec_diff(lst.content.cy->point,
 			res->pi));
 		}
@@ -39,7 +39,7 @@ static	void	check3(t_object lst, t_ray ray, double *solution, t_result *res)
 		if (res->flag)
 		{
 			res->type = "sq";
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->pi = vec_add(ray.org, vec_times_double(ray.dir, *solution));
 			res->normal = vec_cross(vec_diff(lst.content.sq->p2,
 			lst.content.sq->p1), vec_diff(lst.content.sq->p3,
 			lst.content.sq->p1));
@@ -58,7 +58,7 @@ static	void	check2(t_object lst, t_ray ray, double *solution, t_result *res)
 		if (res->flag)
 		{
 			res->type = "tr";
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->pi = vec_add(ray.org, vec_times_double(ray.dir, *solution));
 			res->normal = vec_cross(vec_diff(lst.content.tr->p2,
 			lst.content.tr->p1), vec_diff(lst.content.tr->p3,
 			lst.content.tr->p1));
@@ -77,14 +77,15 @@ static	void	check1(t_object lst, t_ray ray, double *solution, t_result *res)
 		if (res->flag)
 		{
 			res->type = "pl";
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->pi = vec_add(ray.org, vec_times_double(ray.dir, *solution));
 			res->normal = (*(lst.content.plane)).normal;
 		}
 	}
 	check2(lst, ray, solution, res);
 }
 
-void			check_object(t_object lst, t_ray ray, double *solution, t_result *res)
+void			check_object(t_object lst, t_ray ray, double *solution,
+	t_result *res)
 {
 	double		t;
 
@@ -98,7 +99,7 @@ void			check_object(t_object lst, t_ray ray, double *solution, t_result *res)
 		if (res->flag)
 		{
 			res->type = "sp";
-			res->pi = vec_add(ray.org,vec_times_double(ray.dir, *solution));
+			res->pi = vec_add(ray.org, vec_times_double(ray.dir, *solution));
 			res->normal = normalize_vect(get_sphers_normal(*(lst.content.sp),
 			res->pi));
 		}
