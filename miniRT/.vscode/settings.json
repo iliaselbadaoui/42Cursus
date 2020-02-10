@@ -9,7 +9,13 @@
 		"output": "c",
 		"utils.h": "c",
 		"cstdlib": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"array": "c",
+		"string_view": "c",
+		"iterator": "c",
+		"string": "c",
+		"vector": "c",
+		"types.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

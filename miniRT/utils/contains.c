@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:57:54 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/01/13 22:09:10 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/10 12:38:12 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int			contains(t_string container, t_string content)
 {
 	int iter;
+
 	while (*container)
 	{
 		if (*container == *content)

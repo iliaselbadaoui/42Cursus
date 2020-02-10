@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equals.c                                           :+:      :+:    :+:   */
+/*   int_to_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 15:36:25 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/10 15:25:59 by ielbadao         ###   ########.fr       */
+/*   Created: 2020/02/10 12:56:58 by ielbadao          #+#    #+#             */
+/*   Updated: 2020/02/10 17:07:35 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int		equals(t_string s1, t_string s2)
+t_rgb		int_to_rgb(int col)
 {
-	if (!s1 || !s2)
-		return (0);
-	if (s1 == s2)
-		return (1);
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	if (*s1 != *s2)
-		return (0);
-	return (1);
+	t_rgb rgb;
+
+	rgb.b = col % 256;
+	rgb.g = ((col - rgb.b) / 256) % 256;
+	rgb.r = ((col - rgb.b) / (256 * 256)) - (rgb.g / 256);
+	return (rgb);
 }

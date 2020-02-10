@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 15:34:39 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/09 21:59:31 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:00:50 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				object_props_count(t_string	*props);
 int				is_number(t_string	input);
 int				is_in_range(double min, double value, double max);
 double			atod(t_string input);
+t_rgb			int_to_rgb(int col);
 double			floating_part(t_string after_point);
 void			free_2d(t_string **arr);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ielbadao <ielbadao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 10:57:35 by ielbadao          #+#    #+#             */
-/*   Updated: 2020/02/07 16:45:12 by ielbadao         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:55:56 by ielbadao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ typedef struct	s_tirangle_solve
 	t_vec	ab;
 	t_vec	bc;
 	t_vec	ca;
-    t_vec	N;
-    double	NdotRayDirection;
-    double	d;
-    t_vec	point;
+	t_vec	n;
+	double	ndotraydirection;
+	double	d;
+	t_vec	point;
 	t_vec	ap;
 	t_vec	bp;
 	t_vec	u;
@@ -189,5 +189,17 @@ struct			s_data
 	t_camera		*cam;
 	t_lights		*lst;
 }				g_data;
+typedef struct	s_bmp_header
+{
+	int		width;
+	int		height;
+	int		bitcount;
+	int		width_in_bytes;
+	int		imagesize;
+	int		bisize;
+	int		bfoffbits;
+	int		filesize;
+	int		biplanes;
+}				t_bmp_header;
 t_object		*g_object;
 #endif
