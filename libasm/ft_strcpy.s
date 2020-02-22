@@ -1,16 +1,15 @@
 section .text
     global _ft_strcpy
-_ft_strcpy :
-    cmp rsi, rdi
-    je exit
-    mov rcx, 0
+_ft_strcpy:
+    mov rbx, 0
 while :
-    cmp byte[rsi + rcx], 0
+    cmp byte [rsi + rbx], 0
     je exit
-    mov al, byte[rsi + rcx]
-    mov byte[rdi + rcx], al
-    inc rcx
+    movzx rcx, byte[rsi + rbx]
+    mov [rdi + rbx], rcx
+    inc rbx
     jmp while
 exit:
+    mov byte[rdi + rbx], 0
     mov rax, rdi
     ret
