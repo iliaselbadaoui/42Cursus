@@ -1,17 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    app: services
+    tier: backend
+    type: backend
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pv
+  labels:
+    app: services
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
   labels:
-    app: nginx
+    app: services
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: services
   template:
     metadata:
       labels:
-        app: nginx
+        app: services
     spec:
       restartPolicy: Always
       containers:
@@ -21,3 +54,10 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
+        volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv
